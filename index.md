@@ -21,7 +21,7 @@ Each time the event happens, the function is applied and the function's
 return value is returned to the event source. An event could be an HTTP(S)
 request, something on an event queue, whatever.
 
-Functions are ephemeral. They existing for the duration of the function call.
+Functions are ephemeral. They exist for the duration of the function call.
 Once the function returns a value, all of its state and scope and everything
 else about it is assumed to go away.
 
@@ -101,10 +101,10 @@ these are bundled into an Uber JAR. For Python, a
 file. The Swagger definitions for an endpoint are unique based on
 host name and root path.
 
-Funcatron supports performing [`sed`](https://en.wikipedia.org/wiki/Sed) operations
-on Swagger fields based on environment variables. This allows rewriting host name,
-root path, and other Swagger fields if the Func is deployed to a staging (or test)
-server. Thus, there's one deployment unit (a Func bundle) that have well defined
+Funcatron supports aliasing Swagger fields and values in different
+environments such that a single Swagger definition can be run
+in staging and testing environments without change.
+Thus, there's one deployment unit (a Func bundle) that have well defined
 behaviors across test, staging, and production servers.
 
 ### Production
@@ -232,7 +232,7 @@ are currently supported.
 
 ## Licenses and Support
 
-Funcatron is triple licensed under an Apache 2, Eclipse, and LGPL, your choice.
+Funcatron is triple licensed under an Apache 2, Eclipse, and LGPLv3, your choice.
 
 Support is available from the project's founder,
 [David Pollak](mailto:feeder.of.the.bears@gmail.com).
