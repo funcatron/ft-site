@@ -155,7 +155,7 @@ For HTTP requests, Funcatron uses Nginx and Lua (via the
 [OpenResty](http://openresty.org/en/) project) to handle the HTTP requests.
 A small
 Lua script encodes the request as a payload that's sent to a message broker
-(initially RabbitMQ, but this will be pluggable, e.g. Kafka). For large
+(initially RabbitMQ, but this will be pluggable, e.g. Kafka, Redis). For large
 request or response bodies, the body will be written to a shared distributed
 filesystem (e.g., HDFS) and a reference to the file will be enqueued.
 For all but the highest volume installations, 2 Nginx instances
@@ -185,7 +185,7 @@ testing and debugging purposes.
 Every request has a unique ID and each log line includes the unique ID so it's
 possible to correlate a request as it moves across the cluster.
 
-<img alt="architecture" src="/images/arch.svg" width="100%">
+<img alt="architecture" src="http://funcatron.org/images/arch.svg" width="100%">
 
 ### Notes
 
@@ -196,7 +196,7 @@ to support HTTP requests. This is not "hardcoded" but pluggable. Specifically:
   work with the rest of Funcatron. The initial implementation is HTTP via
   Nginx/OpenResty, but nothing in the rest of the system depends on what enqueues
   the request and dequeues the response.
-* RabbitMQ is the initial message broker, but it could be Kafka or any other
+* RabbitMQ is the initial message broker, but it could be Kafka, Redis, or any other
   message broker. This is pluggable.
 * Initially, dispatch from Runners to Funcs will be Java/Scala classes. But the
   dispatch is also pluggable so other languages (Clojure) and
@@ -230,9 +230,14 @@ rather than just computation.
 The project is in the initial development phase. Java and Scala Func bundles
 are currently supported.
 
+## Contributing
+
+Please see [CONTRIBUTING](https://github.com/funcatron/tron/blob/master/CONTRIBUTING.md) for details on
+how to make a contribution.
+
 ## Licenses and Support
 
-Funcatron is triple licensed under an Apache 2, Eclipse, and LGPLv3, your choice.
+Funcatron is licensed under an Apache 2 license.
 
 Support is available from the project's founder,
 [David Pollak](mailto:feeder.of.the.bears@gmail.com).
