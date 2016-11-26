@@ -1,3 +1,5 @@
+title: Funcatron Home Page
+
 # Funcatron
 
 Serverless on Your Cluster:
