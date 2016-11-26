@@ -4,7 +4,7 @@ Serverless on Your Cluster:
 
 * Define Endpoints in Swagger
 * Write Functions in Java, Scala, Clojure, Python, or JavaScript
-* Deploy to Mesos, Kubernets, or Swarm
+* Deploy to Mesos, Kubernetes, or Swarm
 * Autoscale
 
 _Funcatron let's you deploy serverless on any cloud provider or in your
