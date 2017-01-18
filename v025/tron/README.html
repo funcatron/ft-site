@@ -1,0 +1,203 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title></title>
+  <style type="text/css">code{white-space: pre;}</style>
+</head>
+<body>
+<h1 id="funcatron">Funcatron</h1>
+<p>Serverless on Your Cluster:</p>
+<ul>
+<li>Define Endpoints in Swagger</li>
+<li>Write Functions in Java, Scala, Clojure, Python, or JavaScript</li>
+<li>Deploy to Mesos, Kubernets, or Swarm</li>
+<li>Autoscale</li>
+</ul>
+<p><em>Funcatron let's you deploy serverless on any cloud provider or in your<br />
+private cloud. Focus on the functions, avoid vendor lock-in.</em></p>
+<p>This document sets out the goals for the <a href="http://funcatron.org">Funcatron</a> project.</p>
+<h2 id="whats-funcatron">What's Funcatron</h2>
+<p>Amazon's <a href="https://aws.amazon.com/lambda/">Lambda</a> popularized<br />
+<a href="http://www.martinfowler.com/articles/serverless.html">&quot;serverless&quot;</a><br />
+code deployment. It's dead simple: associate a &quot;function&quot; with an event.<br />
+Each time the event happens, the function is applied and the function's<br />
+return value is returned to the event source. An event could be an HTTP(S)<br />
+request, something on an event queue, whatever.</p>
+<p>Functions are ephemeral. They exist for the duration of the function call.<br />
+Once the function returns a value, all of its state and scope and everything<br />
+else about it is assumed to go away.</p>
+<p>Scaling this kind of architecture is simple: the more frequently a function gets<br />
+applied, the more compute resources are allocated to support the function...<br />
+and <a href="https://en.wikipedia.org/wiki/Bob%27s_your_uncle">Bob's Your Uncle</a>.</p>
+<p>The current popular function runners (competitors to Amazon's Lambda), however, are<br />
+proprietary: when you write to the API for Lambda or Google's<br />
+<a href="https://cloud.google.com/functions/docs/">Cloud Functions</a>,<br />
+<em><strong>you're locked into that vendor</strong></em>.</p>
+<p>There's currently no (well, there's <a href="https://developer.ibm.com/openwhisk/">OpenWhisk</a>)<br />
+generic way to do the auto-scale function thing on a private cloud or in a<br />
+way that can migrate from one cloud provider to another.</p>
+<p>Funcatron addresses this. Funcatron is a cloud-provider-neutral mechanism for<br />
+developing, testing, and deploying auto-scalable functions.</p>
+<p>Funcatron is designed to run on container orchestration clusters:<br />
+<a href="https://mesosphere.com/">Mesos</a>, <a href="http://kubernetes.io/">Kubernetes</a>, or<br />
+<a href="https://docker.com">Docker Swarm</a>.</p>
+<h2 id="software-lifecycle">Software Lifecycle</h2>
+<p>Software goes through a lifecycle:</p>
+<ul>
+<li>Authoring</li>
+<li>Testing</li>
+<li>Staging</li>
+<li>Production</li>
+<li>Debugging</li>
+</ul>
+<p>Funcatron addresses software at each stage of the lifecycle.</p>
+<h3 id="authoring">Authoring</h3>
+<p>An engineers sits down to write software. The faster the turn-around between<br />
+code written and &quot;trying it out,&quot; the more productive the engineer will be.</p>
+<p>Funcatron supports a &quot;save, reload&quot; model where the engineer saves a file<br />
+(presuming they're using an IDE that does compilation on save or are using a<br />
+non-compiled language), and their function endpoints are available. That's it.<br />
+No uploading. No reconfiguration. No waiting. The endpoint is available on save.</p>
+<p>Further, the Funcatron model requires knowledge of two things:</p>
+<ul>
+<li><a href="http://swagger.io">Swagger</a></li>
+<li>How to write a simple function in Java, Scala, Clojure, Python, or JavaScript.</li>
+</ul>
+<p><strong>That's it.</strong></p>
+<p>The engineer defines the endpoints in Swagger and uses the <code>operationId</code> to<br />
+specify the function (or class for Java and Scala) to apply when then endpoint<br />
+is requested. Funcatron takes care of the rest.</p>
+<p>Between the fast turn-around and low &quot;new stuff to learn&quot; quotient,<br />
+it's easy to get started with Funcatron. It's also easy to stay productive<br />
+with Funcatron.</p>
+<p>Also, developers need only have Docker installed on their development machine<br />
+to live-test Funcatron code.</p>
+<h3 id="testing">Testing</h3>
+<p>Because Funcatron endpoints are single functions (or methods on newly<br />
+instantiated classes), writing unit tests is simple. Write a unit test and<br />
+test the function.</p>
+<h3 id="staging">Staging</h3>
+<p>Funcatron code bundles (Funcs) contain a Swagger endpoint definition and the<br />
+functions<br />
+that are associated with the endpoint and any library code. For JVM languages,<br />
+these are bundled into an Uber JAR. For Python, a<br />
+<a href="https://github.com/pantsbuild/pex">PEX</a><br />
+file. The Swagger definitions for an endpoint are unique based on<br />
+host name and root path.</p>
+<p>Funcatron supports aliasing Swagger fields and values in different<br />
+environments such that a single Swagger definition can be run<br />
+in staging and testing environments without change.<br />
+Thus, there's one deployment unit (a Func bundle) that have well defined<br />
+behaviors across test, staging, and production servers.</p>
+<h3 id="production">Production</h3>
+<p>Funcatron allows simple deployment and undeployment of end-point collections<br />
+defined in Swagger files and implemented in a JVM language, Python, or NodeJS.</p>
+<p>Requests are forwarded from Nginx via a message queue to a dispatcher (a Tron).<br />
+Based on the hostname and root path, the message is placed on a queue for<br />
+a specific Func. The Func processes the request and sends the response<br />
+to a reply queue. The Nginx process dequeues the response and returns<br />
+it as an HTTP response.</p>
+<p>The number of Func instances running on a cluster is based on the queue depth<br />
+and response time. The Func manager sends statistics back to the Trons<br />
+and the Trons change Func allocation based on these statistics by<br />
+communicating with the container orchestration substrate (Mesos, Kubernetes,<br />
+Swarm) and changing the allocation of Func running containers.</p>
+<p>From the DevOps point of view: deploy a Func and it binds to the appropriate<br />
+HTTP endpoint and scales to handle load.</p>
+<h3 id="debugging-test-cases">Debugging &amp; Test Cases</h3>
+<p>Funcatron logs a unique request ID and the SHA of the Func with every log line<br />
+related to a request. This allows correlation of requests as they fan out through<br />
+a cluster.</p>
+<p>Funcatron allows dynamic changing log levels on a Func-by-Func basis which allows<br />
+capturing more information on demand.</p>
+<p>All communications between the front end, Funcs, and back again are via well<br />
+defined JSON payloads. Funcatron allows capturing request and response<br />
+payloads on a Func-by-Func basis (complete streams, or random sampling).<br />
+This data can be used for testing or debugging.</p>
+<h2 id="architecture">Architecture</h2>
+<p>Funcatron has some ambitious goals... and has an architecture to facilitate<br />
+achieving these goals.</p>
+<p>In all but development mode, Funcatron runs on a Docker container orchestration<br />
+system: Mesos, Kubernetes, or Docker Swarm. We call this the &quot;container<br />
+substrate.&quot; Each of the Funcatron components can be scaled independently with<br />
+messages to the container substrate.</p>
+<p>For HTTP requests, Funcatron uses Nginx and Lua (via the<br />
+<a href="http://openresty.org/en/">OpenResty</a> project) to handle the HTTP requests.<br />
+A small<br />
+Lua script encodes the request as a payload that's sent to a message broker<br />
+(initially RabbitMQ, but this will be pluggable, e.g. Kafka, Redis). For large<br />
+request or response bodies, the body will be written to a shared distributed<br />
+filesystem (e.g., HDFS) and a reference to the file will be enqueued.<br />
+For all but the highest volume installations, 2 Nginx instances<br />
+should be sufficient.</p>
+<p>A &quot;Tron&quot; module dequeues the request. Based on the queue depth<br />
+for the &quot;request firehose&quot;, the container substrate can launch more Trons.</p>
+<p>Based on the combination of <code>host</code> and <code>pathPrefix</code> attributes in the Swagger<br />
+module definition, the Tron enqueues the request on the appropriate queue.</p>
+<p>A Runner module dequeues messages from a number of host/pathPrefix queues and<br />
+forwards the request to the appropriate Func. The runner then takes the function<br />
+return value and appropriately encodes it and places it on the reply queue which<br />
+dequeued by the original endpoint.</p>
+<p>Each Func can run multiple modules. Based on queue depth, queue service time,<br />
+and CPU usage stats from the Funcs, more runners can be allocated on the substrate,<br />
+or more Funcs can be allocated across the runners.</p>
+<p>The Lua scripts dequeues the response and turns in into an Nginx response.</p>
+<p>Because all of the operation of the Funcs and Trons can be captured as messages<br />
+(and all the messages are in JSON), it's possible to capture message streams for<br />
+testing and debugging purposes.</p>
+<p>Every request has a unique ID and each log line includes the unique ID so it's<br />
+possible to correlate a request as it moves across the cluster.</p>
+<p><img alt="architecture" src="http://funcatron.org/images/arch.svg" width="100%"></p>
+<h3 id="notes">Notes</h3>
+<p>The initial implementation uses Nginx/OpenResty, RabbitMQ, Java/Scala, and Mesos<br />
+to support HTTP requests. This is not &quot;hardcoded&quot; but pluggable. Specifically:</p>
+<ul>
+<li>Anything that can enqueue a payload and dequeue the response can<br />
+work with the rest of Funcatron. The initial implementation is HTTP via<br />
+Nginx/OpenResty, but nothing in the rest of the system depends on what enqueues<br />
+the request and dequeues the response.</li>
+<li>RabbitMQ is the initial message broker, but it could be Kafka, Redis, or any other<br />
+message broker. This is pluggable.</li>
+<li>Initially, dispatch from Runners to Funcs will be Java/Scala classes. But the<br />
+dispatch is also pluggable so other languages (Clojure) and<br />
+runtimes (Python, NodeJS) will be supported.</li>
+<li>&quot;But Swagger is HTTP only&quot; well... yes and no... the verb and the scheme are<br />
+HTTP-specific, but they can be ignored... and by the time the request is<br />
+dequeued by the Runner, the origin (HTTP or something else) of the message<br />
+is irrelevant. The power of Swagger is two-fold:</li>
+<li>Excellent definitions of incoming and outgoing data shapes</li>
+<li>Great tooling and lots of general Swagger skills</li>
+</ul>
+<p>Because everything in Funcatron is asynchronous messages, how the messages are<br />
+passed, where the message originate and where responses are dequeued are all<br />
+pluggable and irrelevant to the other parts of the system.</p>
+<p>The key idea in Funcatron is the Func is a well defined bundle of functionality<br />
+that's associated with a particular message signature that maps to well HTTP via<br />
+host, pathPrefix, path, and verb, but could map to something else.</p>
+<p>It may be possible to chain Func invocations. I don't yet have a concrete<br />
+design, but rather than enqueuing a Func return value as a response, it may<br />
+be possible to package it as a request (the request body contains the Func<br />
+return value) and forwarding it to another Func for further processing.</p>
+<p>Finally, if there's no <code>reply-to</code> field in a message, the Func is applied (invoked)<br />
+but the results are discarded. This allows for side effects from the Func<br />
+rather than just computation.</p>
+<h2 id="project-status">Project Status</h2>
+<p>The project is in the initial development phase. Java and Scala Func bundles<br />
+are currently supported.</p>
+<h2 id="contributing">Contributing</h2>
+<p>Please see <a href="https://github.com/funcatron/tron/blob/master/CONTRIBUTING.md">CONTRIBUTING</a> for details on<br />
+how to make a contribution.</p>
+<h2 id="licenses-and-support">Licenses and Support</h2>
+<p>Funcatron is licensed under an Apache 2 license.</p>
+<p>Support is available from the project's founder,<br />
+<script type="text/javascript">
+<!--
+h='&#x67;&#x6d;&#x61;&#x69;&#108;&#46;&#x63;&#x6f;&#x6d;';a='&#64;';n='&#102;&#x65;&#x65;&#100;&#x65;&#114;&#46;&#x6f;&#102;&#46;&#116;&#104;&#x65;&#46;&#98;&#x65;&#x61;&#114;&#x73;';e=n+a+h;
+document.write('<a h'+'ref'+'="ma'+'ilto'+':'+e+'" clas'+'s="em' + 'ail">'+'&#68;&#x61;&#118;&#x69;&#100;&#32;&#80;&#x6f;&#108;&#108;&#x61;&#x6b;'+'<\/'+'a'+'>');
+// -->
+</script><noscript>&#68;&#x61;&#118;&#x69;&#100;&#32;&#80;&#x6f;&#108;&#108;&#x61;&#x6b;&#32;&#40;&#102;&#x65;&#x65;&#100;&#x65;&#114;&#46;&#x6f;&#102;&#46;&#116;&#104;&#x65;&#46;&#98;&#x65;&#x61;&#114;&#x73;&#32;&#x61;&#116;&#32;&#x67;&#x6d;&#x61;&#x69;&#108;&#32;&#100;&#x6f;&#116;&#32;&#x63;&#x6f;&#x6d;&#x29;</noscript>.</p>
+</body>
+</html>

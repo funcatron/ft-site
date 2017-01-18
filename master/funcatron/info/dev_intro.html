@@ -1,0 +1,1349 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge"><![endif]-->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 1.5.5">
+<meta name="author" content="David Pollak">
+<title>Funcatron for Developers</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
+<style>
+/* Asciidoctor default stylesheet | MIT License | http://asciidoctor.org */
+/* Remove comment around @import statement below when using as a custom stylesheet */
+/*@import "https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700";*/
+article,aside,details,figcaption,figure,footer,header,hgroup,main,nav,section,summary{display:block}
+audio,canvas,video{display:inline-block}
+audio:not([controls]){display:none;height:0}
+[hidden],template{display:none}
+script{display:none!important}
+html{font-family:sans-serif;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%}
+a{background:transparent}
+a:focus{outline:thin dotted}
+a:active,a:hover{outline:0}
+h1{font-size:2em;margin:.67em 0}
+abbr[title]{border-bottom:1px dotted}
+b,strong{font-weight:bold}
+dfn{font-style:italic}
+hr{-moz-box-sizing:content-box;box-sizing:content-box;height:0}
+mark{background:#ff0;color:#000}
+code,kbd,pre,samp{font-family:monospace;font-size:1em}
+pre{white-space:pre-wrap}
+q{quotes:"\201C" "\201D" "\2018" "\2019"}
+small{font-size:80%}
+sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}
+sup{top:-.5em}
+sub{bottom:-.25em}
+img{border:0}
+svg:not(:root){overflow:hidden}
+figure{margin:0}
+fieldset{border:1px solid silver;margin:0 2px;padding:.35em .625em .75em}
+legend{border:0;padding:0}
+button,input,select,textarea{font-family:inherit;font-size:100%;margin:0}
+button,input{line-height:normal}
+button,select{text-transform:none}
+button,html input[type="button"],input[type="reset"],input[type="submit"]{-webkit-appearance:button;cursor:pointer}
+button[disabled],html input[disabled]{cursor:default}
+input[type="checkbox"],input[type="radio"]{box-sizing:border-box;padding:0}
+input[type="search"]{-webkit-appearance:textfield;-moz-box-sizing:content-box;-webkit-box-sizing:content-box;box-sizing:content-box}
+input[type="search"]::-webkit-search-cancel-button,input[type="search"]::-webkit-search-decoration{-webkit-appearance:none}
+button::-moz-focus-inner,input::-moz-focus-inner{border:0;padding:0}
+textarea{overflow:auto;vertical-align:top}
+table{border-collapse:collapse;border-spacing:0}
+*,*:before,*:after{-moz-box-sizing:border-box;-webkit-box-sizing:border-box;box-sizing:border-box}
+html,body{font-size:100%}
+body{background:#fff;color:rgba(0,0,0,.8);padding:0;margin:0;font-family:"Noto Serif","DejaVu Serif",serif;font-weight:400;font-style:normal;line-height:1;position:relative;cursor:auto;tab-size:4;-moz-osx-font-smoothing:grayscale;-webkit-font-smoothing:antialiased}
+a:hover{cursor:pointer}
+img,object,embed{max-width:100%;height:auto}
+object,embed{height:100%}
+img{-ms-interpolation-mode:bicubic}
+.left{float:left!important}
+.right{float:right!important}
+.text-left{text-align:left!important}
+.text-right{text-align:right!important}
+.text-center{text-align:center!important}
+.text-justify{text-align:justify!important}
+.hide{display:none}
+img,object,svg{display:inline-block;vertical-align:middle}
+textarea{height:auto;min-height:50px}
+select{width:100%}
+.center{margin-left:auto;margin-right:auto}
+.spread{width:100%}
+p.lead,.paragraph.lead>p,#preamble>.sectionbody>.paragraph:first-of-type p{font-size:1.21875em;line-height:1.6}
+.subheader,.admonitionblock td.content>.title,.audioblock>.title,.exampleblock>.title,.imageblock>.title,.listingblock>.title,.literalblock>.title,.stemblock>.title,.openblock>.title,.paragraph>.title,.quoteblock>.title,table.tableblock>.title,.verseblock>.title,.videoblock>.title,.dlist>.title,.olist>.title,.ulist>.title,.qlist>.title,.hdlist>.title{line-height:1.45;color:#7a2518;font-weight:400;margin-top:0;margin-bottom:.25em}
+div,dl,dt,dd,ul,ol,li,h1,h2,h3,#toctitle,.sidebarblock>.content>.title,h4,h5,h6,pre,form,p,blockquote,th,td{margin:0;padding:0;direction:ltr}
+a{color:#2156a5;text-decoration:underline;line-height:inherit}
+a:hover,a:focus{color:#1d4b8f}
+a img{border:none}
+p{font-family:inherit;font-weight:400;font-size:1em;line-height:1.6;margin-bottom:1.25em;text-rendering:optimizeLegibility}
+p aside{font-size:.875em;line-height:1.35;font-style:italic}
+h1,h2,h3,#toctitle,.sidebarblock>.content>.title,h4,h5,h6{font-family:"Open Sans","DejaVu Sans",sans-serif;font-weight:300;font-style:normal;color:#ba3925;text-rendering:optimizeLegibility;margin-top:1em;margin-bottom:.5em;line-height:1.0125em}
+h1 small,h2 small,h3 small,#toctitle small,.sidebarblock>.content>.title small,h4 small,h5 small,h6 small{font-size:60%;color:#e99b8f;line-height:0}
+h1{font-size:2.125em}
+h2{font-size:1.6875em}
+h3,#toctitle,.sidebarblock>.content>.title{font-size:1.375em}
+h4,h5{font-size:1.125em}
+h6{font-size:1em}
+hr{border:solid #ddddd8;border-width:1px 0 0;clear:both;margin:1.25em 0 1.1875em;height:0}
+em,i{font-style:italic;line-height:inherit}
+strong,b{font-weight:bold;line-height:inherit}
+small{font-size:60%;line-height:inherit}
+code{font-family:"Droid Sans Mono","DejaVu Sans Mono",monospace;font-weight:400;color:rgba(0,0,0,.9)}
+ul,ol,dl{font-size:1em;line-height:1.6;margin-bottom:1.25em;list-style-position:outside;font-family:inherit}
+ul,ol,ul.no-bullet,ol.no-bullet{margin-left:1.5em}
+ul li ul,ul li ol{margin-left:1.25em;margin-bottom:0;font-size:1em}
+ul.square li ul,ul.circle li ul,ul.disc li ul{list-style:inherit}
+ul.square{list-style-type:square}
+ul.circle{list-style-type:circle}
+ul.disc{list-style-type:disc}
+ul.no-bullet{list-style:none}
+ol li ul,ol li ol{margin-left:1.25em;margin-bottom:0}
+dl dt{margin-bottom:.3125em;font-weight:bold}
+dl dd{margin-bottom:1.25em}
+abbr,acronym{text-transform:uppercase;font-size:90%;color:rgba(0,0,0,.8);border-bottom:1px dotted #ddd;cursor:help}
+abbr{text-transform:none}
+blockquote{margin:0 0 1.25em;padding:.5625em 1.25em 0 1.1875em;border-left:1px solid #ddd}
+blockquote cite{display:block;font-size:.9375em;color:rgba(0,0,0,.6)}
+blockquote cite:before{content:"\2014 \0020"}
+blockquote cite a,blockquote cite a:visited{color:rgba(0,0,0,.6)}
+blockquote,blockquote p{line-height:1.6;color:rgba(0,0,0,.85)}
+@media only screen and (min-width:768px){h1,h2,h3,#toctitle,.sidebarblock>.content>.title,h4,h5,h6{line-height:1.2}
+h1{font-size:2.75em}
+h2{font-size:2.3125em}
+h3,#toctitle,.sidebarblock>.content>.title{font-size:1.6875em}
+h4{font-size:1.4375em}}
+table{background:#fff;margin-bottom:1.25em;border:solid 1px #dedede}
+table thead,table tfoot{background:#f7f8f7;font-weight:bold}
+table thead tr th,table thead tr td,table tfoot tr th,table tfoot tr td{padding:.5em .625em .625em;font-size:inherit;color:rgba(0,0,0,.8);text-align:left}
+table tr th,table tr td{padding:.5625em .625em;font-size:inherit;color:rgba(0,0,0,.8)}
+table tr.even,table tr.alt,table tr:nth-of-type(even){background:#f8f8f7}
+table thead tr th,table tfoot tr th,table tbody tr td,table tr td,table tfoot tr td{display:table-cell;line-height:1.6}
+h1,h2,h3,#toctitle,.sidebarblock>.content>.title,h4,h5,h6{line-height:1.2;word-spacing:-.05em}
+h1 strong,h2 strong,h3 strong,#toctitle strong,.sidebarblock>.content>.title strong,h4 strong,h5 strong,h6 strong{font-weight:400}
+.clearfix:before,.clearfix:after,.float-group:before,.float-group:after{content:" ";display:table}
+.clearfix:after,.float-group:after{clear:both}
+*:not(pre)>code{font-size:.9375em;font-style:normal!important;letter-spacing:0;padding:.1em .5ex;word-spacing:-.15em;background-color:#f7f7f8;-webkit-border-radius:4px;border-radius:4px;line-height:1.45;text-rendering:optimizeSpeed;word-wrap:break-word}
+*:not(pre)>code.nobreak{word-wrap:normal}
+*:not(pre)>code.nowrap{white-space:nowrap}
+pre,pre>code{line-height:1.45;color:rgba(0,0,0,.9);font-family:"Droid Sans Mono","DejaVu Sans Mono",monospace;font-weight:400;text-rendering:optimizeSpeed}
+em em{font-style:normal}
+strong strong{font-weight:400}
+.keyseq{color:rgba(51,51,51,.8)}
+kbd{font-family:"Droid Sans Mono","DejaVu Sans Mono",monospace;display:inline-block;color:rgba(0,0,0,.8);font-size:.65em;line-height:1.45;background-color:#f7f7f7;border:1px solid #ccc;-webkit-border-radius:3px;border-radius:3px;-webkit-box-shadow:0 1px 0 rgba(0,0,0,.2),0 0 0 .1em white inset;box-shadow:0 1px 0 rgba(0,0,0,.2),0 0 0 .1em #fff inset;margin:0 .15em;padding:.2em .5em;vertical-align:middle;position:relative;top:-.1em;white-space:nowrap}
+.keyseq kbd:first-child{margin-left:0}
+.keyseq kbd:last-child{margin-right:0}
+.menuseq,.menu{color:rgba(0,0,0,.8)}
+b.button:before,b.button:after{position:relative;top:-1px;font-weight:400}
+b.button:before{content:"[";padding:0 3px 0 2px}
+b.button:after{content:"]";padding:0 2px 0 3px}
+p a>code:hover{color:rgba(0,0,0,.9)}
+#header,#content,#footnotes,#footer{width:100%;margin-left:auto;margin-right:auto;margin-top:0;margin-bottom:0;max-width:62.5em;*zoom:1;position:relative;padding-left:.9375em;padding-right:.9375em}
+#header:before,#header:after,#content:before,#content:after,#footnotes:before,#footnotes:after,#footer:before,#footer:after{content:" ";display:table}
+#header:after,#content:after,#footnotes:after,#footer:after{clear:both}
+#content{margin-top:1.25em}
+#content:before{content:none}
+#header>h1:first-child{color:rgba(0,0,0,.85);margin-top:2.25rem;margin-bottom:0}
+#header>h1:first-child+#toc{margin-top:8px;border-top:1px solid #ddddd8}
+#header>h1:only-child,body.toc2 #header>h1:nth-last-child(2){border-bottom:1px solid #ddddd8;padding-bottom:8px}
+#header .details{border-bottom:1px solid #ddddd8;line-height:1.45;padding-top:.25em;padding-bottom:.25em;padding-left:.25em;color:rgba(0,0,0,.6);display:-ms-flexbox;display:-webkit-flex;display:flex;-ms-flex-flow:row wrap;-webkit-flex-flow:row wrap;flex-flow:row wrap}
+#header .details span:first-child{margin-left:-.125em}
+#header .details span.email a{color:rgba(0,0,0,.85)}
+#header .details br{display:none}
+#header .details br+span:before{content:"\00a0\2013\00a0"}
+#header .details br+span.author:before{content:"\00a0\22c5\00a0";color:rgba(0,0,0,.85)}
+#header .details br+span#revremark:before{content:"\00a0|\00a0"}
+#header #revnumber{text-transform:capitalize}
+#header #revnumber:after{content:"\00a0"}
+#content>h1:first-child:not([class]){color:rgba(0,0,0,.85);border-bottom:1px solid #ddddd8;padding-bottom:8px;margin-top:0;padding-top:1rem;margin-bottom:1.25rem}
+#toc{border-bottom:1px solid #efefed;padding-bottom:.5em}
+#toc>ul{margin-left:.125em}
+#toc ul.sectlevel0>li>a{font-style:italic}
+#toc ul.sectlevel0 ul.sectlevel1{margin:.5em 0}
+#toc ul{font-family:"Open Sans","DejaVu Sans",sans-serif;list-style-type:none}
+#toc li{line-height:1.3334;margin-top:.3334em}
+#toc a{text-decoration:none}
+#toc a:active{text-decoration:underline}
+#toctitle{color:#7a2518;font-size:1.2em}
+@media only screen and (min-width:768px){#toctitle{font-size:1.375em}
+body.toc2{padding-left:15em;padding-right:0}
+#toc.toc2{margin-top:0!important;background-color:#f8f8f7;position:fixed;width:15em;left:0;top:0;border-right:1px solid #efefed;border-top-width:0!important;border-bottom-width:0!important;z-index:1000;padding:1.25em 1em;height:100%;overflow:auto}
+#toc.toc2 #toctitle{margin-top:0;margin-bottom:.8rem;font-size:1.2em}
+#toc.toc2>ul{font-size:.9em;margin-bottom:0}
+#toc.toc2 ul ul{margin-left:0;padding-left:1em}
+#toc.toc2 ul.sectlevel0 ul.sectlevel1{padding-left:0;margin-top:.5em;margin-bottom:.5em}
+body.toc2.toc-right{padding-left:0;padding-right:15em}
+body.toc2.toc-right #toc.toc2{border-right-width:0;border-left:1px solid #efefed;left:auto;right:0}}
+@media only screen and (min-width:1280px){body.toc2{padding-left:20em;padding-right:0}
+#toc.toc2{width:20em}
+#toc.toc2 #toctitle{font-size:1.375em}
+#toc.toc2>ul{font-size:.95em}
+#toc.toc2 ul ul{padding-left:1.25em}
+body.toc2.toc-right{padding-left:0;padding-right:20em}}
+#content #toc{border-style:solid;border-width:1px;border-color:#e0e0dc;margin-bottom:1.25em;padding:1.25em;background:#f8f8f7;-webkit-border-radius:4px;border-radius:4px}
+#content #toc>:first-child{margin-top:0}
+#content #toc>:last-child{margin-bottom:0}
+#footer{max-width:100%;background-color:rgba(0,0,0,.8);padding:1.25em}
+#footer-text{color:rgba(255,255,255,.8);line-height:1.44}
+.sect1{padding-bottom:.625em}
+@media only screen and (min-width:768px){.sect1{padding-bottom:1.25em}}
+.sect1+.sect1{border-top:1px solid #efefed}
+#content h1>a.anchor,h2>a.anchor,h3>a.anchor,#toctitle>a.anchor,.sidebarblock>.content>.title>a.anchor,h4>a.anchor,h5>a.anchor,h6>a.anchor{position:absolute;z-index:1001;width:1.5ex;margin-left:-1.5ex;display:block;text-decoration:none!important;visibility:hidden;text-align:center;font-weight:400}
+#content h1>a.anchor:before,h2>a.anchor:before,h3>a.anchor:before,#toctitle>a.anchor:before,.sidebarblock>.content>.title>a.anchor:before,h4>a.anchor:before,h5>a.anchor:before,h6>a.anchor:before{content:"\00A7";font-size:.85em;display:block;padding-top:.1em}
+#content h1:hover>a.anchor,#content h1>a.anchor:hover,h2:hover>a.anchor,h2>a.anchor:hover,h3:hover>a.anchor,#toctitle:hover>a.anchor,.sidebarblock>.content>.title:hover>a.anchor,h3>a.anchor:hover,#toctitle>a.anchor:hover,.sidebarblock>.content>.title>a.anchor:hover,h4:hover>a.anchor,h4>a.anchor:hover,h5:hover>a.anchor,h5>a.anchor:hover,h6:hover>a.anchor,h6>a.anchor:hover{visibility:visible}
+#content h1>a.link,h2>a.link,h3>a.link,#toctitle>a.link,.sidebarblock>.content>.title>a.link,h4>a.link,h5>a.link,h6>a.link{color:#ba3925;text-decoration:none}
+#content h1>a.link:hover,h2>a.link:hover,h3>a.link:hover,#toctitle>a.link:hover,.sidebarblock>.content>.title>a.link:hover,h4>a.link:hover,h5>a.link:hover,h6>a.link:hover{color:#a53221}
+.audioblock,.imageblock,.literalblock,.listingblock,.stemblock,.videoblock{margin-bottom:1.25em}
+.admonitionblock td.content>.title,.audioblock>.title,.exampleblock>.title,.imageblock>.title,.listingblock>.title,.literalblock>.title,.stemblock>.title,.openblock>.title,.paragraph>.title,.quoteblock>.title,table.tableblock>.title,.verseblock>.title,.videoblock>.title,.dlist>.title,.olist>.title,.ulist>.title,.qlist>.title,.hdlist>.title{text-rendering:optimizeLegibility;text-align:left;font-family:"Noto Serif","DejaVu Serif",serif;font-size:1rem;font-style:italic}
+table.tableblock>caption.title{white-space:nowrap;overflow:visible;max-width:0}
+.paragraph.lead>p,#preamble>.sectionbody>.paragraph:first-of-type p{color:rgba(0,0,0,.85)}
+table.tableblock #preamble>.sectionbody>.paragraph:first-of-type p{font-size:inherit}
+.admonitionblock>table{border-collapse:separate;border:0;background:none;width:100%}
+.admonitionblock>table td.icon{text-align:center;width:80px}
+.admonitionblock>table td.icon img{max-width:none}
+.admonitionblock>table td.icon .title{font-weight:bold;font-family:"Open Sans","DejaVu Sans",sans-serif;text-transform:uppercase}
+.admonitionblock>table td.content{padding-left:1.125em;padding-right:1.25em;border-left:1px solid #ddddd8;color:rgba(0,0,0,.6)}
+.admonitionblock>table td.content>:last-child>:last-child{margin-bottom:0}
+.exampleblock>.content{border-style:solid;border-width:1px;border-color:#e6e6e6;margin-bottom:1.25em;padding:1.25em;background:#fff;-webkit-border-radius:4px;border-radius:4px}
+.exampleblock>.content>:first-child{margin-top:0}
+.exampleblock>.content>:last-child{margin-bottom:0}
+.sidebarblock{border-style:solid;border-width:1px;border-color:#e0e0dc;margin-bottom:1.25em;padding:1.25em;background:#f8f8f7;-webkit-border-radius:4px;border-radius:4px}
+.sidebarblock>:first-child{margin-top:0}
+.sidebarblock>:last-child{margin-bottom:0}
+.sidebarblock>.content>.title{color:#7a2518;margin-top:0;text-align:center}
+.exampleblock>.content>:last-child>:last-child,.exampleblock>.content .olist>ol>li:last-child>:last-child,.exampleblock>.content .ulist>ul>li:last-child>:last-child,.exampleblock>.content .qlist>ol>li:last-child>:last-child,.sidebarblock>.content>:last-child>:last-child,.sidebarblock>.content .olist>ol>li:last-child>:last-child,.sidebarblock>.content .ulist>ul>li:last-child>:last-child,.sidebarblock>.content .qlist>ol>li:last-child>:last-child{margin-bottom:0}
+.literalblock pre,.listingblock pre:not(.highlight),.listingblock pre[class="highlight"],.listingblock pre[class^="highlight "],.listingblock pre.CodeRay,.listingblock pre.prettyprint{background:#f7f7f8}
+.sidebarblock .literalblock pre,.sidebarblock .listingblock pre:not(.highlight),.sidebarblock .listingblock pre[class="highlight"],.sidebarblock .listingblock pre[class^="highlight "],.sidebarblock .listingblock pre.CodeRay,.sidebarblock .listingblock pre.prettyprint{background:#f2f1f1}
+.literalblock pre,.literalblock pre[class],.listingblock pre,.listingblock pre[class]{-webkit-border-radius:4px;border-radius:4px;word-wrap:break-word;padding:1em;font-size:.8125em}
+.literalblock pre.nowrap,.literalblock pre[class].nowrap,.listingblock pre.nowrap,.listingblock pre[class].nowrap{overflow-x:auto;white-space:pre;word-wrap:normal}
+@media only screen and (min-width:768px){.literalblock pre,.literalblock pre[class],.listingblock pre,.listingblock pre[class]{font-size:.90625em}}
+@media only screen and (min-width:1280px){.literalblock pre,.literalblock pre[class],.listingblock pre,.listingblock pre[class]{font-size:1em}}
+.literalblock.output pre{color:#f7f7f8;background-color:rgba(0,0,0,.9)}
+.listingblock pre.highlightjs{padding:0}
+.listingblock pre.highlightjs>code{padding:1em;-webkit-border-radius:4px;border-radius:4px}
+.listingblock pre.prettyprint{border-width:0}
+.listingblock>.content{position:relative}
+.listingblock code[data-lang]:before{display:none;content:attr(data-lang);position:absolute;font-size:.75em;top:.425rem;right:.5rem;line-height:1;text-transform:uppercase;color:#999}
+.listingblock:hover code[data-lang]:before{display:block}
+.listingblock.terminal pre .command:before{content:attr(data-prompt);padding-right:.5em;color:#999}
+.listingblock.terminal pre .command:not([data-prompt]):before{content:"$"}
+table.pyhltable{border-collapse:separate;border:0;margin-bottom:0;background:none}
+table.pyhltable td{vertical-align:top;padding-top:0;padding-bottom:0;line-height:1.45}
+table.pyhltable td.code{padding-left:.75em;padding-right:0}
+pre.pygments .lineno,table.pyhltable td:not(.code){color:#999;padding-left:0;padding-right:.5em;border-right:1px solid #ddddd8}
+pre.pygments .lineno{display:inline-block;margin-right:.25em}
+table.pyhltable .linenodiv{background:none!important;padding-right:0!important}
+.quoteblock{margin:0 1em 1.25em 1.5em;display:table}
+.quoteblock>.title{margin-left:-1.5em;margin-bottom:.75em}
+.quoteblock blockquote,.quoteblock blockquote p{color:rgba(0,0,0,.85);font-size:1.15rem;line-height:1.75;word-spacing:.1em;letter-spacing:0;font-style:italic;text-align:justify}
+.quoteblock blockquote{margin:0;padding:0;border:0}
+.quoteblock blockquote:before{content:"\201c";float:left;font-size:2.75em;font-weight:bold;line-height:.6em;margin-left:-.6em;color:#7a2518;text-shadow:0 1px 2px rgba(0,0,0,.1)}
+.quoteblock blockquote>.paragraph:last-child p{margin-bottom:0}
+.quoteblock .attribution{margin-top:.5em;margin-right:.5ex;text-align:right}
+.quoteblock .quoteblock{margin-left:0;margin-right:0;padding:.5em 0;border-left:3px solid rgba(0,0,0,.6)}
+.quoteblock .quoteblock blockquote{padding:0 0 0 .75em}
+.quoteblock .quoteblock blockquote:before{display:none}
+.verseblock{margin:0 1em 1.25em 1em}
+.verseblock pre{font-family:"Open Sans","DejaVu Sans",sans;font-size:1.15rem;color:rgba(0,0,0,.85);font-weight:300;text-rendering:optimizeLegibility}
+.verseblock pre strong{font-weight:400}
+.verseblock .attribution{margin-top:1.25rem;margin-left:.5ex}
+.quoteblock .attribution,.verseblock .attribution{font-size:.9375em;line-height:1.45;font-style:italic}
+.quoteblock .attribution br,.verseblock .attribution br{display:none}
+.quoteblock .attribution cite,.verseblock .attribution cite{display:block;letter-spacing:-.025em;color:rgba(0,0,0,.6)}
+.quoteblock.abstract{margin:0 0 1.25em 0;display:block}
+.quoteblock.abstract blockquote,.quoteblock.abstract blockquote p{text-align:left;word-spacing:0}
+.quoteblock.abstract blockquote:before,.quoteblock.abstract blockquote p:first-of-type:before{display:none}
+table.tableblock{max-width:100%;border-collapse:separate}
+table.tableblock td>.paragraph:last-child p>p:last-child,table.tableblock th>p:last-child,table.tableblock td>p:last-child{margin-bottom:0}
+table.tableblock,th.tableblock,td.tableblock{border:0 solid #dedede}
+table.grid-all th.tableblock,table.grid-all td.tableblock{border-width:0 1px 1px 0}
+table.grid-all tfoot>tr>th.tableblock,table.grid-all tfoot>tr>td.tableblock{border-width:1px 1px 0 0}
+table.grid-cols th.tableblock,table.grid-cols td.tableblock{border-width:0 1px 0 0}
+table.grid-all *>tr>.tableblock:last-child,table.grid-cols *>tr>.tableblock:last-child{border-right-width:0}
+table.grid-rows th.tableblock,table.grid-rows td.tableblock{border-width:0 0 1px 0}
+table.grid-all tbody>tr:last-child>th.tableblock,table.grid-all tbody>tr:last-child>td.tableblock,table.grid-all thead:last-child>tr>th.tableblock,table.grid-rows tbody>tr:last-child>th.tableblock,table.grid-rows tbody>tr:last-child>td.tableblock,table.grid-rows thead:last-child>tr>th.tableblock{border-bottom-width:0}
+table.grid-rows tfoot>tr>th.tableblock,table.grid-rows tfoot>tr>td.tableblock{border-width:1px 0 0 0}
+table.frame-all{border-width:1px}
+table.frame-sides{border-width:0 1px}
+table.frame-topbot{border-width:1px 0}
+th.halign-left,td.halign-left{text-align:left}
+th.halign-right,td.halign-right{text-align:right}
+th.halign-center,td.halign-center{text-align:center}
+th.valign-top,td.valign-top{vertical-align:top}
+th.valign-bottom,td.valign-bottom{vertical-align:bottom}
+th.valign-middle,td.valign-middle{vertical-align:middle}
+table thead th,table tfoot th{font-weight:bold}
+tbody tr th{display:table-cell;line-height:1.6;background:#f7f8f7}
+tbody tr th,tbody tr th p,tfoot tr th,tfoot tr th p{color:rgba(0,0,0,.8);font-weight:bold}
+p.tableblock>code:only-child{background:none;padding:0}
+p.tableblock{font-size:1em}
+td>div.verse{white-space:pre}
+ol{margin-left:1.75em}
+ul li ol{margin-left:1.5em}
+dl dd{margin-left:1.125em}
+dl dd:last-child,dl dd:last-child>:last-child{margin-bottom:0}
+ol>li p,ul>li p,ul dd,ol dd,.olist .olist,.ulist .ulist,.ulist .olist,.olist .ulist{margin-bottom:.625em}
+ul.unstyled,ol.unnumbered,ul.checklist,ul.none{list-style-type:none}
+ul.unstyled,ol.unnumbered,ul.checklist{margin-left:.625em}
+ul.checklist li>p:first-child>.fa-square-o:first-child,ul.checklist li>p:first-child>.fa-check-square-o:first-child{width:1em;font-size:.85em}
+ul.checklist li>p:first-child>input[type="checkbox"]:first-child{width:1em;position:relative;top:1px}
+ul.inline{margin:0 auto .625em auto;margin-left:-1.375em;margin-right:0;padding:0;list-style:none;overflow:hidden}
+ul.inline>li{list-style:none;float:left;margin-left:1.375em;display:block}
+ul.inline>li>*{display:block}
+.unstyled dl dt{font-weight:400;font-style:normal}
+ol.arabic{list-style-type:decimal}
+ol.decimal{list-style-type:decimal-leading-zero}
+ol.loweralpha{list-style-type:lower-alpha}
+ol.upperalpha{list-style-type:upper-alpha}
+ol.lowerroman{list-style-type:lower-roman}
+ol.upperroman{list-style-type:upper-roman}
+ol.lowergreek{list-style-type:lower-greek}
+.hdlist>table,.colist>table{border:0;background:none}
+.hdlist>table>tbody>tr,.colist>table>tbody>tr{background:none}
+td.hdlist1,td.hdlist2{vertical-align:top;padding:0 .625em}
+td.hdlist1{font-weight:bold;padding-bottom:1.25em}
+.literalblock+.colist,.listingblock+.colist{margin-top:-.5em}
+.colist>table tr>td:first-of-type{padding:0 .75em;line-height:1}
+.colist>table tr>td:last-of-type{padding:.25em 0}
+.thumb,.th{line-height:0;display:inline-block;border:solid 4px #fff;-webkit-box-shadow:0 0 0 1px #ddd;box-shadow:0 0 0 1px #ddd}
+.imageblock.left,.imageblock[style*="float: left"]{margin:.25em .625em 1.25em 0}
+.imageblock.right,.imageblock[style*="float: right"]{margin:.25em 0 1.25em .625em}
+.imageblock>.title{margin-bottom:0}
+.imageblock.thumb,.imageblock.th{border-width:6px}
+.imageblock.thumb>.title,.imageblock.th>.title{padding:0 .125em}
+.image.left,.image.right{margin-top:.25em;margin-bottom:.25em;display:inline-block;line-height:0}
+.image.left{margin-right:.625em}
+.image.right{margin-left:.625em}
+a.image{text-decoration:none;display:inline-block}
+a.image object{pointer-events:none}
+sup.footnote,sup.footnoteref{font-size:.875em;position:static;vertical-align:super}
+sup.footnote a,sup.footnoteref a{text-decoration:none}
+sup.footnote a:active,sup.footnoteref a:active{text-decoration:underline}
+#footnotes{padding-top:.75em;padding-bottom:.75em;margin-bottom:.625em}
+#footnotes hr{width:20%;min-width:6.25em;margin:-.25em 0 .75em 0;border-width:1px 0 0 0}
+#footnotes .footnote{padding:0 .375em 0 .225em;line-height:1.3334;font-size:.875em;margin-left:1.2em;text-indent:-1.05em;margin-bottom:.2em}
+#footnotes .footnote a:first-of-type{font-weight:bold;text-decoration:none}
+#footnotes .footnote:last-of-type{margin-bottom:0}
+#content #footnotes{margin-top:-.625em;margin-bottom:0;padding:.75em 0}
+.gist .file-data>table{border:0;background:#fff;width:100%;margin-bottom:0}
+.gist .file-data>table td.line-data{width:99%}
+div.unbreakable{page-break-inside:avoid}
+.big{font-size:larger}
+.small{font-size:smaller}
+.underline{text-decoration:underline}
+.overline{text-decoration:overline}
+.line-through{text-decoration:line-through}
+.aqua{color:#00bfbf}
+.aqua-background{background-color:#00fafa}
+.black{color:#000}
+.black-background{background-color:#000}
+.blue{color:#0000bf}
+.blue-background{background-color:#0000fa}
+.fuchsia{color:#bf00bf}
+.fuchsia-background{background-color:#fa00fa}
+.gray{color:#606060}
+.gray-background{background-color:#7d7d7d}
+.green{color:#006000}
+.green-background{background-color:#007d00}
+.lime{color:#00bf00}
+.lime-background{background-color:#00fa00}
+.maroon{color:#600000}
+.maroon-background{background-color:#7d0000}
+.navy{color:#000060}
+.navy-background{background-color:#00007d}
+.olive{color:#606000}
+.olive-background{background-color:#7d7d00}
+.purple{color:#600060}
+.purple-background{background-color:#7d007d}
+.red{color:#bf0000}
+.red-background{background-color:#fa0000}
+.silver{color:#909090}
+.silver-background{background-color:#bcbcbc}
+.teal{color:#006060}
+.teal-background{background-color:#007d7d}
+.white{color:#bfbfbf}
+.white-background{background-color:#fafafa}
+.yellow{color:#bfbf00}
+.yellow-background{background-color:#fafa00}
+span.icon>.fa{cursor:default}
+.admonitionblock td.icon [class^="fa icon-"]{font-size:2.5em;text-shadow:1px 1px 2px rgba(0,0,0,.5);cursor:default}
+.admonitionblock td.icon .icon-note:before{content:"\f05a";color:#19407c}
+.admonitionblock td.icon .icon-tip:before{content:"\f0eb";text-shadow:1px 1px 2px rgba(155,155,0,.8);color:#111}
+.admonitionblock td.icon .icon-warning:before{content:"\f071";color:#bf6900}
+.admonitionblock td.icon .icon-caution:before{content:"\f06d";color:#bf3400}
+.admonitionblock td.icon .icon-important:before{content:"\f06a";color:#bf0000}
+.conum[data-value]{display:inline-block;color:#fff!important;background-color:rgba(0,0,0,.8);-webkit-border-radius:100px;border-radius:100px;text-align:center;font-size:.75em;width:1.67em;height:1.67em;line-height:1.67em;font-family:"Open Sans","DejaVu Sans",sans-serif;font-style:normal;font-weight:bold}
+.conum[data-value] *{color:#fff!important}
+.conum[data-value]+b{display:none}
+.conum[data-value]:after{content:attr(data-value)}
+pre .conum[data-value]{position:relative;top:-.125em}
+b.conum *{color:inherit!important}
+.conum:not([data-value]):empty{display:none}
+dt,th.tableblock,td.content,div.footnote{text-rendering:optimizeLegibility}
+h1,h2,p,td.content,span.alt{letter-spacing:-.01em}
+p strong,td.content strong,div.footnote strong{letter-spacing:-.005em}
+p,blockquote,dt,td.content,span.alt{font-size:1.0625rem}
+p{margin-bottom:1.25rem}
+.sidebarblock p,.sidebarblock dt,.sidebarblock td.content,p.tableblock{font-size:1em}
+.exampleblock>.content{background-color:#fffef7;border-color:#e0e0dc;-webkit-box-shadow:0 1px 4px #e0e0dc;box-shadow:0 1px 4px #e0e0dc}
+.print-only{display:none!important}
+@media print{@page{margin:1.25cm .75cm}
+*{-webkit-box-shadow:none!important;box-shadow:none!important;text-shadow:none!important}
+a{color:inherit!important;text-decoration:underline!important}
+a.bare,a[href^="#"],a[href^="mailto:"]{text-decoration:none!important}
+a[href^="http:"]:not(.bare):after,a[href^="https:"]:not(.bare):after{content:"(" attr(href) ")";display:inline-block;font-size:.875em;padding-left:.25em}
+abbr[title]:after{content:" (" attr(title) ")"}
+pre,blockquote,tr,img,object,svg{page-break-inside:avoid}
+thead{display:table-header-group}
+svg{max-width:100%}
+p,blockquote,dt,td.content{font-size:1em;orphans:3;widows:3}
+h2,h3,#toctitle,.sidebarblock>.content>.title{page-break-after:avoid}
+#toc,.sidebarblock,.exampleblock>.content{background:none!important}
+#toc{border-bottom:1px solid #ddddd8!important;padding-bottom:0!important}
+.sect1{padding-bottom:0!important}
+.sect1+.sect1{border:0!important}
+#header>h1:first-child{margin-top:1.25rem}
+body.book #header{text-align:center}
+body.book #header>h1:first-child{border:0!important;margin:2.5em 0 1em 0}
+body.book #header .details{border:0!important;display:block;padding:0!important}
+body.book #header .details span:first-child{margin-left:0!important}
+body.book #header .details br{display:block}
+body.book #header .details br+span:before{content:none!important}
+body.book #toc{border:0!important;text-align:left!important;padding:0!important;margin:0!important}
+body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-break-before:always}
+.listingblock code[data-lang]:before{display:block}
+#footer{background:none!important;padding:0 .9375em}
+#footer-text{color:rgba(0,0,0,.6)!important;font-size:.9em}
+.hide-on-print{display:none!important}
+.print-only{display:block!important}
+.hide-for-print{display:none!important}
+.show-for-print{display:inherit!important}}
+</style>
+<style>
+.listingblock .pygments .hll { background-color: #ffffcc }
+.listingblock .pygments, .listingblock .pygments code { background: #f8f8f8; }
+.listingblock .pygments .tok-c { color: #408080; font-style: italic } /* Comment */
+.listingblock .pygments .tok-err { border: 1px solid #FF0000 } /* Error */
+.listingblock .pygments .tok-k { color: #008000; font-weight: bold } /* Keyword */
+.listingblock .pygments .tok-o { color: #666666 } /* Operator */
+.listingblock .pygments .tok-ch { color: #408080; font-style: italic } /* Comment.Hashbang */
+.listingblock .pygments .tok-cm { color: #408080; font-style: italic } /* Comment.Multiline */
+.listingblock .pygments .tok-cp { color: #BC7A00 } /* Comment.Preproc */
+.listingblock .pygments .tok-cpf { color: #408080; font-style: italic } /* Comment.PreprocFile */
+.listingblock .pygments .tok-c1 { color: #408080; font-style: italic } /* Comment.Single */
+.listingblock .pygments .tok-cs { color: #408080; font-style: italic } /* Comment.Special */
+.listingblock .pygments .tok-gd { color: #A00000 } /* Generic.Deleted */
+.listingblock .pygments .tok-ge { font-style: italic } /* Generic.Emph */
+.listingblock .pygments .tok-gr { color: #FF0000 } /* Generic.Error */
+.listingblock .pygments .tok-gh { color: #000080; font-weight: bold } /* Generic.Heading */
+.listingblock .pygments .tok-gi { color: #00A000 } /* Generic.Inserted */
+.listingblock .pygments .tok-go { color: #888888 } /* Generic.Output */
+.listingblock .pygments .tok-gp { color: #000080; font-weight: bold } /* Generic.Prompt */
+.listingblock .pygments .tok-gs { font-weight: bold } /* Generic.Strong */
+.listingblock .pygments .tok-gu { color: #800080; font-weight: bold } /* Generic.Subheading */
+.listingblock .pygments .tok-gt { color: #0044DD } /* Generic.Traceback */
+.listingblock .pygments .tok-kc { color: #008000; font-weight: bold } /* Keyword.Constant */
+.listingblock .pygments .tok-kd { color: #008000; font-weight: bold } /* Keyword.Declaration */
+.listingblock .pygments .tok-kn { color: #008000; font-weight: bold } /* Keyword.Namespace */
+.listingblock .pygments .tok-kp { color: #008000 } /* Keyword.Pseudo */
+.listingblock .pygments .tok-kr { color: #008000; font-weight: bold } /* Keyword.Reserved */
+.listingblock .pygments .tok-kt { color: #B00040 } /* Keyword.Type */
+.listingblock .pygments .tok-m { color: #666666 } /* Literal.Number */
+.listingblock .pygments .tok-s { color: #BA2121 } /* Literal.String */
+.listingblock .pygments .tok-na { color: #7D9029 } /* Name.Attribute */
+.listingblock .pygments .tok-nb { color: #008000 } /* Name.Builtin */
+.listingblock .pygments .tok-nc { color: #0000FF; font-weight: bold } /* Name.Class */
+.listingblock .pygments .tok-no { color: #880000 } /* Name.Constant */
+.listingblock .pygments .tok-nd { color: #AA22FF } /* Name.Decorator */
+.listingblock .pygments .tok-ni { color: #999999; font-weight: bold } /* Name.Entity */
+.listingblock .pygments .tok-ne { color: #D2413A; font-weight: bold } /* Name.Exception */
+.listingblock .pygments .tok-nf { color: #0000FF } /* Name.Function */
+.listingblock .pygments .tok-nl { color: #A0A000 } /* Name.Label */
+.listingblock .pygments .tok-nn { color: #0000FF; font-weight: bold } /* Name.Namespace */
+.listingblock .pygments .tok-nt { color: #008000; font-weight: bold } /* Name.Tag */
+.listingblock .pygments .tok-nv { color: #19177C } /* Name.Variable */
+.listingblock .pygments .tok-ow { color: #AA22FF; font-weight: bold } /* Operator.Word */
+.listingblock .pygments .tok-w { color: #bbbbbb } /* Text.Whitespace */
+.listingblock .pygments .tok-mb { color: #666666 } /* Literal.Number.Bin */
+.listingblock .pygments .tok-mf { color: #666666 } /* Literal.Number.Float */
+.listingblock .pygments .tok-mh { color: #666666 } /* Literal.Number.Hex */
+.listingblock .pygments .tok-mi { color: #666666 } /* Literal.Number.Integer */
+.listingblock .pygments .tok-mo { color: #666666 } /* Literal.Number.Oct */
+.listingblock .pygments .tok-sa { color: #BA2121 } /* Literal.String.Affix */
+.listingblock .pygments .tok-sb { color: #BA2121 } /* Literal.String.Backtick */
+.listingblock .pygments .tok-sc { color: #BA2121 } /* Literal.String.Char */
+.listingblock .pygments .tok-dl { color: #BA2121 } /* Literal.String.Delimiter */
+.listingblock .pygments .tok-sd { color: #BA2121; font-style: italic } /* Literal.String.Doc */
+.listingblock .pygments .tok-s2 { color: #BA2121 } /* Literal.String.Double */
+.listingblock .pygments .tok-se { color: #BB6622; font-weight: bold } /* Literal.String.Escape */
+.listingblock .pygments .tok-sh { color: #BA2121 } /* Literal.String.Heredoc */
+.listingblock .pygments .tok-si { color: #BB6688; font-weight: bold } /* Literal.String.Interpol */
+.listingblock .pygments .tok-sx { color: #008000 } /* Literal.String.Other */
+.listingblock .pygments .tok-sr { color: #BB6688 } /* Literal.String.Regex */
+.listingblock .pygments .tok-s1 { color: #BA2121 } /* Literal.String.Single */
+.listingblock .pygments .tok-ss { color: #19177C } /* Literal.String.Symbol */
+.listingblock .pygments .tok-bp { color: #008000 } /* Name.Builtin.Pseudo */
+.listingblock .pygments .tok-fm { color: #0000FF } /* Name.Function.Magic */
+.listingblock .pygments .tok-vc { color: #19177C } /* Name.Variable.Class */
+.listingblock .pygments .tok-vg { color: #19177C } /* Name.Variable.Global */
+.listingblock .pygments .tok-vi { color: #19177C } /* Name.Variable.Instance */
+.listingblock .pygments .tok-vm { color: #19177C } /* Name.Variable.Magic */
+.listingblock .pygments .tok-il { color: #666666 } /* Literal.Number.Integer.Long */
+</style>
+</head>
+<body class="article">
+<div id="header">
+<h1>Funcatron for Developers</h1>
+<div class="details">
+<span id="author" class="author">David Pollak</span><br>
+<span id="email" class="email"><a href="mailto:d@funcatron.org">d@funcatron.org</a></span><br>
+<span id="revnumber">version 0.2.5,</span>
+<span id="revdate">2017-01-06</span>
+</div>
+<div id="toc" class="toc">
+<div id="toctitle">Table of Contents</div>
+<ul class="sectlevel1">
+<li><a href="#_introduction">Introduction</a></li>
+<li><a href="#_basic_coding_concepts">Basic Coding Concepts</a></li>
+<li><a href="#_getting_started">Getting Started</a>
+<ul class="sectlevel2">
+<li><a href="#_start_funcatron">Start Funcatron</a></li>
+<li><a href="#_create_a_new_project">Create a new project</a></li>
+<li><a href="#_pieces_parts">Pieces Parts</a></li>
+<li><a href="#_serializers">Serializers</a></li>
+</ul>
+</li>
+<li><a href="#_funcatron_swagger_file">Funcatron Swagger File</a></li>
+<li><a href="#_execution_properties">Execution Properties</a></li>
+<li><a href="#_packaging_your_func_bundle">Packaging your Func Bundle</a>
+<ul class="sectlevel2">
+<li><a href="#_deploying">Deploying</a></li>
+</ul>
+</li>
+<li><a href="#_the_build_file">The Build File</a></li>
+</ul>
+</div>
+</div>
+<div id="content">
+<div class="sect1">
+<h2 id="_introduction">Introduction</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Funcatron lets you focus on the business logic of your code. <em>What?</em></p>
+</div>
+<div class="paragraph">
+<p>Much of the code you write deals with a cross-section of concerns&#8230;&#8203;
+&#8220;How do I serialize/deserialize the data?&#8221; &#8220;What are the security
+ rules associated with this REST endpoint?&#8221; &#8220;How does this
+ code scale?&#8221; etc. Note that none of the above is the actual
+ business logic of what the code is supposed to do.</p>
+</div>
+<div class="paragraph">
+<p>Funcatron separates the concerns in your code so that you
+can focus on the business logic and declare the rules for the
+other concerns.</p>
+</div>
+<div class="paragraph">
+<p>Funcatron uses technology that you&#8217;re familiar with (Java, Scala,
+JSON, JavaScript, etc.) as well as some newer, but very popular technology:
+<a href="http://swagger.io/">Swagger</a>.</p>
+</div>
+<div class="paragraph">
+<p>With Funcation you:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Define your endpoints including data shapes and access control in
+a Swagger document.</p>
+</li>
+<li>
+<p>Write methods/functions to implement those endpoints.</p>
+</li>
+<li>
+<p>Package the pieces together in an <a href="https://maven.apache.org/plugins/maven-assembly-plugin/usage.html">Assembly</a>,
+<a href="https://github.com/pantsbuild/pex">PEX</a>, or other &#8220;collection of libraries and code&#8221; bundle. These
+are known as &#8220;Func Bundles&#8221;.</p>
+</li>
+<li>
+<p>Deploy to <a href="https://mesosphere.com/">Mesos</a>, <a href="http://kubernetes.io/">Kubernetes</a>, or <a href="https://www.docker.com/products/docker-swarm">Docker Swarm</a>.
+These are known as &#8220;Container Substrates&#8221;.</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>What Funcatron does:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Wires up HTTP endpoints.</p>
+</li>
+<li>
+<p>Routes requests.</p>
+</li>
+<li>
+<p>Serializes/Deserializes data.</p>
+</li>
+<li>
+<p>Handles access control.</p>
+</li>
+<li>
+<p>Auto-scales.</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>Initially, Funcatron will handle HTTP-based REST endpoints. But an HTTP
+    request is an event. Funcatron will route events&#8230;&#8203; so the same
+    code that may service an HTTP endpoint, may also service a
+    &#8220;new customer added&#8221; event.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_basic_coding_concepts">Basic Coding Concepts</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>So, what do you have to care about? Writing simple classes:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="pygments highlight"><code data-lang="java"><span class="tok-kd">public</span> <span class="tok-kd">class</span> <span class="tok-nc">SimpleFunc</span> <span class="tok-kd">implements</span> <span class="tok-n">Func</span><span class="tok-o">&lt;</span><span class="tok-n">Data</span><span class="tok-o">&gt;</span> <span class="tok-o">{</span>
+    <span class="tok-nd">@Override</span>
+    <span class="tok-kd">public</span> <span class="tok-n">Object</span> <span class="tok-nf">apply</span><span class="tok-o">(</span><span class="tok-n">Data</span> <span class="tok-n">data</span><span class="tok-o">,</span> <span class="tok-n">Context</span> <span class="tok-n">context</span><span class="tok-o">)</span> <span class="tok-o">{</span>
+        <span class="tok-n">Number</span> <span class="tok-n">cnt</span> <span class="tok-o">=</span> <span class="tok-o">(</span><span class="tok-n">Number</span><span class="tok-o">)</span> <span class="tok-n">context</span><span class="tok-o">.</span><span class="tok-na">getRequestParams</span><span class="tok-o">().</span><span class="tok-na">get</span><span class="tok-o">(</span><span class="tok-s">&quot;path&quot;</span><span class="tok-o">).</span><span class="tok-na">get</span><span class="tok-o">(</span><span class="tok-s">&quot;cnt&quot;</span><span class="tok-o">);</span>
+
+        <span class="tok-n">List</span><span class="tok-o">&lt;</span><span class="tok-n">Data</span><span class="tok-o">&gt;</span> <span class="tok-n">ret</span> <span class="tok-o">=</span> <span class="tok-k">new</span> <span class="tok-n">ArrayList</span><span class="tok-o">&lt;&gt;();</span>
+        <span class="tok-k">for</span> <span class="tok-o">(</span><span class="tok-kt">int</span> <span class="tok-n">i</span> <span class="tok-o">=</span> <span class="tok-mi">1</span><span class="tok-o">;</span> <span class="tok-n">i</span> <span class="tok-o">&lt;=</span> <span class="tok-n">cnt</span><span class="tok-o">.</span><span class="tok-na">intValue</span><span class="tok-o">();</span> <span class="tok-n">i</span><span class="tok-o">++)</span> <span class="tok-o">{</span>
+            <span class="tok-n">ret</span><span class="tok-o">.</span><span class="tok-na">add</span><span class="tok-o">(</span><span class="tok-k">new</span> <span class="tok-n">Data</span><span class="tok-o">(</span><span class="tok-n">data</span><span class="tok-o">.</span><span class="tok-na">getName</span><span class="tok-o">()</span> <span class="tok-o">+</span> <span class="tok-n">i</span><span class="tok-o">,</span> <span class="tok-n">data</span><span class="tok-o">.</span><span class="tok-na">getAge</span><span class="tok-o">()</span> <span class="tok-o">+</span> <span class="tok-n">i</span><span class="tok-o">));</span>
+        <span class="tok-o">}</span>
+
+        <span class="tok-k">return</span> <span class="tok-n">ret</span><span class="tok-o">;</span>
+    <span class="tok-o">}</span>
+<span class="tok-o">}</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The above code is your business logic. The first parameter to the <code>apply</code> method
+is the value that came from the &#8220;caller&#8221; (e.g., the HTTP POST), and the
+second parameter is the &#8220;Context&#8221;</p>
+</div>
+<div class="paragraph">
+<p>Each Funcatron <code>Func</code> extends the <code>funcatron.intf.Func</code> interface.
+The type parameter tells Funcatron what class to deserialize the parameter
+into.</p>
+</div>
+<div class="paragraph">
+<p>The <code>Context</code> parameter contains the raw request information as well as access to
+<code>Logger</code> and other resources.</p>
+</div>
+<div class="paragraph">
+<p>The <code>apply</code> method is invoked (applied) when the event occurs and the return
+value of the method is serialized and returned as a response to the event.</p>
+</div>
+<div class="paragraph">
+<p>To wire the Func to an HTTP endpoint, a Swagger file named <code>funcatron.yml</code>
+defines the relationship:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="pygments highlight"><code data-lang="yaml">  <span class="tok-l tok-l-Scalar tok-l-Scalar-Plain">/change/{cnt}</span><span class="tok-p tok-p-Indicator">:</span>
+    <span class="tok-l tok-l-Scalar tok-l-Scalar-Plain">post</span><span class="tok-p tok-p-Indicator">:</span>
+      <span class="tok-l tok-l-Scalar tok-l-Scalar-Plain">description</span><span class="tok-p tok-p-Indicator">:</span> <span class="tok-l tok-l-Scalar tok-l-Scalar-Plain">Returns a user based on a single ID, if the user does not have access to the pet</span>
+      <span class="tok-l tok-l-Scalar tok-l-Scalar-Plain">operationId</span><span class="tok-p tok-p-Indicator">:</span> <span class="tok-l tok-l-Scalar tok-l-Scalar-Plain">funcatron.java_sample.PostOrDelete</span>
+      <span class="tok-l tok-l-Scalar tok-l-Scalar-Plain">parameters</span><span class="tok-p tok-p-Indicator">:</span>
+        <span class="tok-p tok-p-Indicator">-</span> <span class="tok-l tok-l-Scalar tok-l-Scalar-Plain">name</span><span class="tok-p tok-p-Indicator">:</span> <span class="tok-l tok-l-Scalar tok-l-Scalar-Plain">cnt</span>
+          <span class="tok-l tok-l-Scalar tok-l-Scalar-Plain">in</span><span class="tok-p tok-p-Indicator">:</span> <span class="tok-l tok-l-Scalar tok-l-Scalar-Plain">path</span>
+          <span class="tok-l tok-l-Scalar tok-l-Scalar-Plain">description</span><span class="tok-p tok-p-Indicator">:</span> <span class="tok-l tok-l-Scalar tok-l-Scalar-Plain">number of Data to return</span>
+          <span class="tok-l tok-l-Scalar tok-l-Scalar-Plain">required</span><span class="tok-p tok-p-Indicator">:</span> <span class="tok-l tok-l-Scalar tok-l-Scalar-Plain">true</span>
+          <span class="tok-l tok-l-Scalar tok-l-Scalar-Plain">type</span><span class="tok-p tok-p-Indicator">:</span> <span class="tok-l tok-l-Scalar tok-l-Scalar-Plain">integer</span>
+          <span class="tok-l tok-l-Scalar tok-l-Scalar-Plain">format</span><span class="tok-p tok-p-Indicator">:</span> <span class="tok-l tok-l-Scalar tok-l-Scalar-Plain">int64</span>
+        <span class="tok-p tok-p-Indicator">-</span> <span class="tok-l tok-l-Scalar tok-l-Scalar-Plain">name</span><span class="tok-p tok-p-Indicator">:</span> <span class="tok-l tok-l-Scalar tok-l-Scalar-Plain">data</span>
+          <span class="tok-l tok-l-Scalar tok-l-Scalar-Plain">in</span><span class="tok-p tok-p-Indicator">:</span> <span class="tok-l tok-l-Scalar tok-l-Scalar-Plain">body</span>
+          <span class="tok-l tok-l-Scalar tok-l-Scalar-Plain">description</span><span class="tok-p tok-p-Indicator">:</span> <span class="tok-l tok-l-Scalar tok-l-Scalar-Plain">The data</span>
+          <span class="tok-l tok-l-Scalar tok-l-Scalar-Plain">required</span><span class="tok-p tok-p-Indicator">:</span> <span class="tok-l tok-l-Scalar tok-l-Scalar-Plain">true</span>
+          <span class="tok-l tok-l-Scalar tok-l-Scalar-Plain">schema</span><span class="tok-p tok-p-Indicator">:</span>
+            <span class="tok-l tok-l-Scalar tok-l-Scalar-Plain">$ref</span><span class="tok-p tok-p-Indicator">:</span> <span class="tok-s">&#39;#/definitions/Data&#39;</span>
+      <span class="tok-l tok-l-Scalar tok-l-Scalar-Plain">responses</span><span class="tok-p tok-p-Indicator">:</span>
+        <span class="tok-s">&quot;200&quot;</span><span class="tok-p tok-p-Indicator">:</span>
+          <span class="tok-l tok-l-Scalar tok-l-Scalar-Plain">description</span><span class="tok-p tok-p-Indicator">:</span> <span class="tok-l tok-l-Scalar tok-l-Scalar-Plain">Repeats the posted data cnt times</span>
+          <span class="tok-l tok-l-Scalar tok-l-Scalar-Plain">type</span><span class="tok-p tok-p-Indicator">:</span> <span class="tok-l tok-l-Scalar tok-l-Scalar-Plain">array</span>
+          <span class="tok-l tok-l-Scalar tok-l-Scalar-Plain">items</span><span class="tok-p tok-p-Indicator">:</span>
+            <span class="tok-l tok-l-Scalar tok-l-Scalar-Plain">$ref</span><span class="tok-p tok-p-Indicator">:</span> <span class="tok-s">&#39;#/definitions/Data&#39;</span>
+<span class="tok-nn">...</span>
+  <span class="tok-l tok-l-Scalar tok-l-Scalar-Plain">Data</span><span class="tok-p tok-p-Indicator">:</span>
+    <span class="tok-l tok-l-Scalar tok-l-Scalar-Plain">required</span><span class="tok-p tok-p-Indicator">:</span>
+      <span class="tok-p tok-p-Indicator">-</span> <span class="tok-l tok-l-Scalar tok-l-Scalar-Plain">name</span>
+      <span class="tok-p tok-p-Indicator">-</span> <span class="tok-l tok-l-Scalar tok-l-Scalar-Plain">age</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The <code>operationId</code> field contains the class of the Func. Note the <code>cnt</code> path
+parameter is defined as an <code>integer</code>. The <code>cnt</code> parameter is <code>required</code>. Funcatron
+will coerce the parameter to a <code>Number</code> before the <code>apply</code> method is called.
+The contract allows the developer to focus on the business logic without
+having to test all the parameters.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_getting_started">Getting Started</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Okay, we&#8217;ve taken a look at the basic concepts in Funcatron. Now, let&#8217;s
+start a new project.</p>
+</div>
+<div class="paragraph">
+<p>To get started, you will need to install the following:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://docker.com">Docker</a>&#8201;&#8212;&#8201;Docker allows you to run Funcatron on your development box so that you can
+do live debugging.</p>
+</li>
+<li>
+<p><a href="http://www.oracle.com/technetwork/java/javase/overview/index.html">Java</a>&#8201;&#8212;&#8201;Install the Java Development
+Kit (JDK) so you can run and compile Java code</p>
+</li>
+<li>
+<p><a href="https://maven.apache.org/">Maven</a>&#8201;&#8212;&#8201;You can use the build tool of your choice with Funcatron. However,
+for this tutorial, we are using Maven. There are <a href="https://github.com/funcatron/samples">sample</a>
+ Funcatron projects using Maven,
+Gradle, sbt, and lein.</p>
+</li>
+<li>
+<p>Your IDE of choice.</p>
+</li>
+</ul>
+</div>
+<div class="sect2">
+<h3 id="_start_funcatron">Start Funcatron</h3>
+<div class="paragraph">
+<p>First, let&#8217;s start a local version of Funcatron running in a Docker container:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="pygments highlight"><code data-lang="shell">docker run -ti --rm -e TRON_1=--devmode -p 3000:3000 -p 54657:54657 funcatron/tron:v0.2.5</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>That command tells <code>docker</code> to <code>run</code> the <code>funcatron/tron:v0.2.5</code> container.</p>
+</div>
+<div class="paragraph">
+<p>We want
+an <code>-ti</code> interactive terminal so we can see the logs from Funcatron.</p>
+</div>
+<div class="paragraph">
+<p><code>--rm</code> removes the
+instance at the end of execution.</p>
+</div>
+<div class="paragraph">
+<p><code>-e TRON_1=--devmode</code> tells Funcatron to run in developer mode where HTTP requests to
+port 3000 are run through the Funcatron code and forwarded to a developer &#8220;shim&#8221;
+connected via port 54657.</p>
+</div>
+<div class="paragraph">
+<p><code>-p 3000:3000 -p 54657:54657</code> exposes the container&#8217;s port on <code>localhost</code>.</p>
+</div>
+<div class="paragraph">
+<p>A couple of notes. This is a stripped down version of Funcatron that <em>only</em> routes
+HTTP requests to the development time code. It does not host Func Bundles. It does
+not have any statistics about usage. It&#8217;s just a dumb pipe of HTTP request to the &#8220;shim&#8221; port.
+Also, the &#8220;shim&#8221; port speaks a very dumb protocol. Don&#8217;t try to <code>curl</code> to it or do
+anything else with it. Why a dumb protocol? Because we wanted to have as small a footprint
+as possible for the code that runs in your application.</p>
+</div>
+<div class="paragraph">
+<p>Test to see if Funcation is running by pointing your browser to <a href="http://localhost:3000" class="bare">http://localhost:3000</a> .
+You should see a message like: <code>No Swagger Defined. Unable to route request</code>. This
+is because there&#8217;s no application connected to Funcatron. So&#8230;&#8203; let&#8217;s create an app.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_create_a_new_project">Create a new project</h3>
+<div class="paragraph">
+<p>The first thing we do is create a new project using Maven&#8217;s Archetype
+feature:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="pygments highlight"><code data-lang="shell">mvn archetype:generate -B \
+   -DarchetypeGroupId=funcatron \
+   -DarchetypeArtifactId=starter \
+   -DarchetypeVersion=0.2.5 \
+   -DgroupId=my.stellar \
+   -DartifactId=thang \
+   -Dversion=0.1.0 \
+   -DarchetypeRepository=https://clojars.org/repo</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Or if you&#8217;re using Windows PowerShell:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="pygments highlight"><code data-lang="powershell"><span class="tok-n">mvn</span> <span class="tok-n">archetype</span><span class="tok-err">:</span><span class="tok-n">generate</span> <span class="tok-s2">&quot;-B&quot;</span> <span class="tok-s2">&quot;-DarchetypeGroupId=funcatron&quot;</span> <span class="tok-s2">&quot;-DarchetypeArtifactId=starter&quot;</span> <span class="tok-s2">&quot;-DarchetypeVersion=0.2.5&quot;</span> <span class="tok-s2">&quot;-DgroupId=my.stellar&quot;</span> <span class="tok-s2">&quot;-DartifactId=thang&quot;</span> <span class="tok-s2">&quot;-Dversion=0.1.0&quot;</span> <span class="tok-s2">&quot;-DarchetypeRepository=https://clojars.org/repo&quot;</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Things you&#8217;ll change for your project: <code>-DgroupId=</code> and <code>-DartifactId</code>.</p>
+</div>
+<div class="paragraph">
+<p>Once you have the project created, <code>cd</code> into the project directory and
+type <code>mvn compile exec:java</code>.</p>
+</div>
+<div class="paragraph">
+<p>Once the code is running, you&#8217;ll be able to browse to <a href="http://localhost:3000/api/sample" class="bare">http://localhost:3000/api/sample</a>
+and see data.</p>
+</div>
+<div class="paragraph">
+<p>Yay!</p>
+</div>
+<div class="paragraph">
+<p>You&#8217;ve got your new Funcatron project up and running.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_pieces_parts">Pieces Parts</h3>
+<div class="paragraph">
+<p>We&#8217;ve created a running project. Now, let&#8217;s go through the
+parts of the project.</p>
+</div>
+<div class="sect3">
+<h4 id="_the_java_stuff">The Java Stuff</h4>
+<div class="paragraph">
+<p>The actual code that&#8217;s executed is the Java code.</p>
+</div>
+<div class="sect4">
+<h5 id="_data_shapes">Data Shapes</h5>
+<div class="paragraph">
+<p>The data is in a <a href="https://en.wikipedia.org/wiki/Plain_Old_Java_Object">PoJo</a> in the
+<code>MyPojo.java</code> file. The code is pretty normal:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="pygments highlight"><code data-lang="java"><span class="tok-kd">public</span> <span class="tok-kd">class</span> <span class="tok-nc">MyPojo</span> <span class="tok-kd">implements</span> <span class="tok-n">java</span><span class="tok-o">.</span><span class="tok-na">io</span><span class="tok-o">.</span><span class="tok-na">Serializable</span> <span class="tok-o">{</span>
+     <span class="tok-kd">private</span> <span class="tok-n">String</span> <span class="tok-n">name</span><span class="tok-o">;</span>
+     <span class="tok-kd">private</span> <span class="tok-kt">int</span> <span class="tok-n">age</span><span class="tok-o">;</span>
+
+     <span class="tok-kd">public</span> <span class="tok-n">String</span> <span class="tok-nf">getName</span><span class="tok-o">(){</span>
+         <span class="tok-k">return</span> <span class="tok-k">this</span><span class="tok-o">.</span><span class="tok-na">name</span><span class="tok-o">;</span>
+     <span class="tok-o">}</span>
+
+     <span class="tok-kd">public</span> <span class="tok-kt">void</span> <span class="tok-nf">setName</span><span class="tok-o">(</span><span class="tok-n">String</span> <span class="tok-n">name</span><span class="tok-o">){</span>
+         <span class="tok-k">this</span><span class="tok-o">.</span><span class="tok-na">name</span> <span class="tok-o">=</span> <span class="tok-n">name</span><span class="tok-o">;</span>
+     <span class="tok-o">}</span>
+
+     <span class="tok-kd">public</span> <span class="tok-n">Integer</span> <span class="tok-nf">getAge</span><span class="tok-o">(){</span>
+         <span class="tok-k">return</span> <span class="tok-k">this</span><span class="tok-o">.</span><span class="tok-na">age</span><span class="tok-o">;</span>
+     <span class="tok-o">}</span>
+
+     <span class="tok-kd">public</span> <span class="tok-kt">void</span> <span class="tok-nf">setAge</span><span class="tok-o">(</span><span class="tok-n">Integer</span> <span class="tok-n">age</span><span class="tok-o">){</span>
+         <span class="tok-k">this</span><span class="tok-o">.</span><span class="tok-na">age</span> <span class="tok-o">=</span> <span class="tok-n">age</span><span class="tok-o">;</span>
+     <span class="tok-o">}</span>
+ <span class="tok-o">}</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p><code>MyPojo</code> is a Java class with getters and setters.</p>
+</div>
+<div class="paragraph">
+<p>Funcatron converts incoming requests into a parameter for the <code>Func</code> application (call
+to the <code>apply</code> method on the <code>Func</code> implementation) and serializes the return value.
+By default, Funcatron uses <a href="https://github.com/FasterXML/jackson">Jackson</a> to serialize
+and deserialize values. Having PoJos that represent the data shapes for your application
+makes it super simple to do serialization.</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_logic">Logic</h5>
+<div class="paragraph">
+<p>In the <code>MyFunction.java</code> file, there are a bunch of different pieces:
+the <code>apply</code> method that Funcatron applies, the database access
+code, and the &#8220;dev-time&#8221; code that
+connects to the Funcatron instance.</p>
+</div>
+<div class="paragraph">
+<p>Let&#8217;s start by looking at the dev-time code:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="pygments highlight"><code data-lang="java">    <span class="tok-kd">public</span> <span class="tok-kd">static</span> <span class="tok-kt">void</span> <span class="tok-nf">main</span><span class="tok-o">(</span><span class="tok-n">String</span><span class="tok-o">[]</span> <span class="tok-n">args</span><span class="tok-o">)</span> <span class="tok-kd">throws</span> <span class="tok-n">Exception</span> <span class="tok-o">{</span>
+        <span class="tok-n">System</span><span class="tok-o">.</span><span class="tok-na">out</span><span class="tok-o">.</span><span class="tok-na">println</span><span class="tok-o">(</span><span class="tok-s">&quot;Starting connection to Funcatron dev server&quot;</span><span class="tok-o">);</span>
+        <span class="tok-n">System</span><span class="tok-o">.</span><span class="tok-na">out</span><span class="tok-o">.</span><span class="tok-na">println</span><span class="tok-o">(</span><span class="tok-s">&quot;run the Funcatron dev server with: docker run -ti --rm  -e TRON_1=--devmode -p 3000:3000 -p 54657:54657 funcatron/tron:v0.2.5&quot;</span><span class="tok-o">);</span>
+        <span class="tok-n">System</span><span class="tok-o">.</span><span class="tok-na">out</span><span class="tok-o">.</span><span class="tok-na">println</span><span class="tok-o">(</span><span class="tok-s">&quot;Then point your browser to http://localhost:3000/api/sample&quot;</span><span class="tok-o">);</span>
+
+        <span class="tok-n">Register</span><span class="tok-o">.</span><span class="tok-na">register</span><span class="tok-o">(</span><span class="tok-n">funcatronDevHost</span><span class="tok-o">(),</span> <span class="tok-n">funcatronDevPort</span><span class="tok-o">(),</span>
+                <span class="tok-k">new</span> <span class="tok-n">File</span><span class="tok-o">(</span><span class="tok-s">&quot;src/main/resources/funcatron.yaml&quot;</span><span class="tok-o">),</span>
+                <span class="tok-k">new</span> <span class="tok-n">File</span><span class="tok-o">(</span><span class="tok-s">&quot;src/main/resources/exec_props.json&quot;</span><span class="tok-o">));</span>
+    <span class="tok-o">}</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The code prints some messages and connects to the
+development-time Funcatron instance in the Docker container.</p>
+</div>
+<div class="paragraph">
+<p>This code is useful for you to set up your IDE to do debugging, etc. while
+you run a mini version of Funcatron in a Docker container. What does it do?</p>
+</div>
+<div class="paragraph">
+<p>It makes a connection to the Docker container running mini-Funcatron. When mini-Func
+gets an HTTP request, it packages the request up and forwards the request to the
+app which is likely running in your IDE. You can see output, set breakpoints, and generally
+rapidly update your app.</p>
+</div>
+<div class="paragraph">
+<p>Also, given that your Funcatron apps should be small, recompile times should be short so you
+can quickly cycle and quickly build your app.</p>
+</div>
+<div class="paragraph">
+<p>If you&#8217;re using a language or a development environment that allows
+dynamic code reloading (e.g., Clojure or <a href="https://zeroturnaround.com/software/jrebel/">JRebel</a>)
+the <code>funcatron.yaml</code> (Swagger file) and the exec_props (runtime
+properties) will reflect the current values&#8230;&#8203; update them
+at will.</p>
+</div>
+<div class="paragraph">
+<p>Next, let&#8217;s look at the database code:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="pygments highlight"><code data-lang="java">    <span class="tok-cm">/**</span>
+<span class="tok-cm">     * Add the pojo to the database</span>
+<span class="tok-cm">     * @param pojo the Pojo to add</span>
+<span class="tok-cm">     * @param c the context</span>
+<span class="tok-cm">     */</span>
+    <span class="tok-kd">private</span> <span class="tok-kt">void</span> <span class="tok-nf">addToDatabase</span><span class="tok-o">(</span><span class="tok-n">MyPojo</span> <span class="tok-n">pojo</span><span class="tok-o">,</span> <span class="tok-n">Context</span> <span class="tok-n">c</span><span class="tok-o">)</span> <span class="tok-o">{</span>
+        <span class="tok-k">try</span> <span class="tok-o">{</span>
+            <span class="tok-c1">// get the DB connection</span>
+            <span class="tok-n">c</span><span class="tok-o">.</span><span class="tok-na">vendForName</span><span class="tok-o">(</span><span class="tok-s">&quot;db&quot;</span><span class="tok-o">,</span> <span class="tok-n">Connection</span><span class="tok-o">.</span><span class="tok-na">class</span><span class="tok-o">).</span>
+                    <span class="tok-n">map</span><span class="tok-o">((</span><span class="tok-n">Connection</span> <span class="tok-n">db</span><span class="tok-o">)</span> <span class="tok-o">-&gt;</span> <span class="tok-o">{</span>
+                        <span class="tok-k">try</span> <span class="tok-o">{</span>
+                            <span class="tok-c1">// db stuff here</span>
+                        <span class="tok-o">}</span> <span class="tok-k">catch</span> <span class="tok-o">(</span><span class="tok-n">SQLException</span> <span class="tok-n">se</span><span class="tok-o">)</span> <span class="tok-o">{</span>
+                            <span class="tok-n">c</span><span class="tok-o">.</span><span class="tok-na">getLogger</span><span class="tok-o">().</span><span class="tok-na">log</span><span class="tok-o">(</span><span class="tok-n">Level</span><span class="tok-o">.</span><span class="tok-na">WARNING</span><span class="tok-o">,</span> <span class="tok-s">&quot;Failed to insert pojo&quot;</span><span class="tok-o">,</span> <span class="tok-n">se</span><span class="tok-o">);</span>
+                        <span class="tok-o">}</span>
+                        <span class="tok-k">return</span> <span class="tok-kc">null</span><span class="tok-o">;</span>
+                    <span class="tok-o">});</span>
+        <span class="tok-o">}</span> <span class="tok-k">catch</span> <span class="tok-o">(</span><span class="tok-n">Exception</span> <span class="tok-n">e</span><span class="tok-o">)</span> <span class="tok-o">{</span>
+            <span class="tok-n">c</span><span class="tok-o">.</span><span class="tok-na">getLogger</span><span class="tok-o">().</span><span class="tok-na">log</span><span class="tok-o">(</span><span class="tok-n">Level</span><span class="tok-o">.</span><span class="tok-na">WARNING</span><span class="tok-o">,</span> <span class="tok-s">&quot;Failed to add pojo to db&quot;</span><span class="tok-o">,</span> <span class="tok-n">e</span><span class="tok-o">);</span>
+        <span class="tok-o">}</span>
+    <span class="tok-o">}</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The key takeaways are:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>The <code>Context</code> allows access to logging via the <code>getLogger()</code> method.</p>
+</li>
+<li>
+<p>Access to the database and other services is done via the <code>vendForName(name, class)</code>
+method which returns an <code>Optional&lt;class&gt;</code>. These items are defined in the <code>exec_props.json</code> file.</p>
+</li>
+<li>
+<p>The <code>map</code> method on the <code>Optional</code> accesses the vended instance.</p>
+</li>
+<li>
+<p>If objects vended during a request are transactional (e.g., JDBC connections),
+the transactions will be automatically committed if the function returns
+successfully, but will be rolled back if the function throws an exception.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Finally, let&#8217;s take a look at the <code>apply</code> method (the heart of the business logic for the <code>Func</code>):</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="pygments highlight"><code data-lang="java">    <span class="tok-kd">public</span> <span class="tok-n">Object</span> <span class="tok-nf">apply</span><span class="tok-o">(</span><span class="tok-n">MyPojo</span> <span class="tok-n">pojo</span><span class="tok-o">,</span> <span class="tok-kd">final</span> <span class="tok-n">Context</span> <span class="tok-n">context</span><span class="tok-o">)</span> <span class="tok-kd">throws</span> <span class="tok-n">Exception</span> <span class="tok-o">{</span>
+        <span class="tok-k">if</span> <span class="tok-o">(</span><span class="tok-kc">null</span> <span class="tok-o">==</span> <span class="tok-n">pojo</span><span class="tok-o">)</span> <span class="tok-o">{</span>
+            <span class="tok-n">pojo</span> <span class="tok-o">=</span> <span class="tok-k">new</span> <span class="tok-n">MyPojo</span><span class="tok-o">();</span>
+            <span class="tok-n">pojo</span><span class="tok-o">.</span><span class="tok-na">setName</span><span class="tok-o">(</span><span class="tok-s">&quot;Example&quot;</span><span class="tok-o">);</span>
+            <span class="tok-n">pojo</span><span class="tok-o">.</span><span class="tok-na">setAge</span><span class="tok-o">(</span><span class="tok-mi">42</span><span class="tok-o">);</span>
+        <span class="tok-o">}</span>
+
+        <span class="tok-c1">// if we have a Redis driver, let the world know</span>
+        <span class="tok-n">context</span><span class="tok-o">.</span><span class="tok-na">vendForName</span><span class="tok-o">(</span><span class="tok-s">&quot;cache&quot;</span><span class="tok-o">,</span> <span class="tok-n">Jedis</span><span class="tok-o">.</span><span class="tok-na">class</span><span class="tok-o">).</span><span class="tok-na">map</span><span class="tok-o">(</span><span class="tok-n">a</span> <span class="tok-o">-&gt;</span>
+        <span class="tok-o">{</span>
+            <span class="tok-n">context</span><span class="tok-o">.</span><span class="tok-na">getLogger</span><span class="tok-o">().</span><span class="tok-na">log</span><span class="tok-o">(</span><span class="tok-n">Level</span><span class="tok-o">.</span><span class="tok-na">INFO</span><span class="tok-o">,</span> <span class="tok-s">&quot;Yay!. Got Redis Driver&quot;</span><span class="tok-o">);</span>
+            <span class="tok-k">return</span> <span class="tok-kc">null</span><span class="tok-o">;</span>
+        <span class="tok-o">});</span>
+
+        <span class="tok-n">pojo</span><span class="tok-o">.</span><span class="tok-na">setName</span><span class="tok-o">(</span><span class="tok-s">&quot;Hello: &quot;</span> <span class="tok-o">+</span> <span class="tok-n">pojo</span><span class="tok-o">.</span><span class="tok-na">getName</span><span class="tok-o">()</span> <span class="tok-o">+</span> <span class="tok-s">&quot; at &quot;</span> <span class="tok-o">+</span> <span class="tok-o">(</span><span class="tok-k">new</span> <span class="tok-n">Date</span><span class="tok-o">()));</span>
+        <span class="tok-n">pojo</span><span class="tok-o">.</span><span class="tok-na">setAge</span><span class="tok-o">(</span><span class="tok-n">pojo</span><span class="tok-o">.</span><span class="tok-na">getAge</span><span class="tok-o">()</span> <span class="tok-o">+</span> <span class="tok-mi">1</span><span class="tok-o">);</span>
+
+        <span class="tok-c1">// put the pojo in the DB</span>
+        <span class="tok-n">addToDatabase</span><span class="tok-o">(</span><span class="tok-n">pojo</span><span class="tok-o">,</span> <span class="tok-n">context</span><span class="tok-o">);</span>
+
+        <span class="tok-k">return</span> <span class="tok-n">pojo</span><span class="tok-o">;</span>
+    <span class="tok-o">}</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>If the <code>pojo</code> is passed as a parameter (i.e., the function was invoked via
+a <code>POST</code> or <code>PUT</code>), it will be populated in the <code>pojo</code> parameter.</p>
+</div>
+<div class="paragraph">
+<p>The method contains plain old Java code, which is exactly what you want: focus
+on the business logic.</p>
+</div>
+<div class="paragraph">
+<p>Oh&#8230;&#8203; and we print a message if we&#8217;ve got a Redis driver&#8230;&#8203; so&#8230;&#8203; how
+did we get a Redis driver?</p>
+</div>
+<div class="paragraph">
+<p>&#8220;Why does Funcatron use the Java logger?&#8221; Well&#8230;&#8203; it&#8217;s like this&#8230;&#8203;
+there are 18 billion logging libraries in Java-land and we needed
+to choose one, so we chose the one built into Java.</p>
+</div>
+<div class="paragraph">
+<p>Under the covers, we do lots of fun things with logging including
+associating each log line with the Git SHA (unique code version)
+of the code that generated the log line as well as having a unique
+id for each request that&#8217;s propagated across the cluster so you can
+see all the places where a request fanned out to.</p>
+</div>
+<div class="paragraph">
+<p>Let&#8217;s take a gander at <code>RedisDriver.java</code>:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="pygments highlight"><code data-lang="java"><span class="tok-kd">public</span> <span class="tok-kd">class</span> <span class="tok-nc">RedisProvider</span> <span class="tok-kd">implements</span> <span class="tok-n">ServiceVendorBuilder</span> <span class="tok-o">{</span>
+    <span class="tok-cm">/**</span>
+<span class="tok-cm">     * What&#39;s the name of this driver?</span>
+<span class="tok-cm">     * @return the unique name</span>
+<span class="tok-cm">     */</span>
+    <span class="tok-nd">@Override</span>
+    <span class="tok-kd">public</span> <span class="tok-n">String</span> <span class="tok-nf">forType</span><span class="tok-o">()</span> <span class="tok-o">{</span>
+        <span class="tok-k">return</span> <span class="tok-s">&quot;redis&quot;</span><span class="tok-o">;</span>
+    <span class="tok-o">}</span>
+
+    <span class="tok-cm">/**</span>
+<span class="tok-cm">     * Some fancy null testing</span>
+<span class="tok-cm">     * @param o an object</span>
+<span class="tok-cm">     * @param clz a class to test</span>
+<span class="tok-cm">     * @param &lt;T&gt; the type of the class</span>
+<span class="tok-cm">     * @return null if o is not an instance of the class or null</span>
+<span class="tok-cm">     */</span>
+    <span class="tok-kd">private</span> <span class="tok-o">&lt;</span><span class="tok-n">T</span><span class="tok-o">&gt;</span> <span class="tok-n">T</span> <span class="tok-nf">ofType</span><span class="tok-o">(</span><span class="tok-n">Object</span> <span class="tok-n">o</span><span class="tok-o">,</span> <span class="tok-n">Class</span><span class="tok-o">&lt;</span><span class="tok-n">T</span><span class="tok-o">&gt;</span> <span class="tok-n">clz</span><span class="tok-o">)</span> <span class="tok-o">{</span>
+        <span class="tok-k">if</span> <span class="tok-o">(</span><span class="tok-kc">null</span> <span class="tok-o">!=</span> <span class="tok-n">o</span> <span class="tok-o">&amp;&amp;</span>
+                <span class="tok-n">clz</span><span class="tok-o">.</span><span class="tok-na">isInstance</span><span class="tok-o">(</span><span class="tok-n">o</span><span class="tok-o">))</span> <span class="tok-k">return</span> <span class="tok-o">(</span><span class="tok-n">T</span><span class="tok-o">)</span> <span class="tok-n">o</span><span class="tok-o">;</span>
+        <span class="tok-k">return</span> <span class="tok-kc">null</span><span class="tok-o">;</span>
+    <span class="tok-o">}</span>
+
+    <span class="tok-cm">/**</span>
+<span class="tok-cm">     * Build something that will vend the named service based on the property map</span>
+<span class="tok-cm">     * @param name the name of the item</span>
+<span class="tok-cm">     * @param properties the properties</span>
+<span class="tok-cm">     * @param logger if something needs logging</span>
+<span class="tok-cm">     * @return If the properties are valid, return a ServiceVendor that will do the right thing</span>
+<span class="tok-cm">     */</span>
+    <span class="tok-nd">@Override</span>
+    <span class="tok-kd">public</span> <span class="tok-n">Optional</span><span class="tok-o">&lt;</span><span class="tok-n">ServiceVendor</span><span class="tok-o">&lt;?&gt;&gt;</span> <span class="tok-n">buildVendor</span><span class="tok-o">(</span><span class="tok-n">String</span> <span class="tok-n">name</span><span class="tok-o">,</span> <span class="tok-n">Map</span><span class="tok-o">&lt;</span><span class="tok-n">String</span><span class="tok-o">,</span> <span class="tok-n">Object</span><span class="tok-o">&gt;</span> <span class="tok-n">properties</span><span class="tok-o">,</span> <span class="tok-n">Logger</span> <span class="tok-n">logger</span><span class="tok-o">)</span> <span class="tok-o">{</span>
+        <span class="tok-kd">final</span> <span class="tok-n">String</span> <span class="tok-n">host</span> <span class="tok-o">=</span> <span class="tok-n">ofType</span><span class="tok-o">(</span><span class="tok-n">properties</span><span class="tok-o">.</span><span class="tok-na">get</span><span class="tok-o">(</span><span class="tok-s">&quot;host&quot;</span><span class="tok-o">),</span> <span class="tok-n">String</span><span class="tok-o">.</span><span class="tok-na">class</span><span class="tok-o">);</span>
+
+        <span class="tok-k">if</span> <span class="tok-o">(</span><span class="tok-kc">null</span> <span class="tok-o">==</span> <span class="tok-n">host</span><span class="tok-o">)</span> <span class="tok-k">return</span> <span class="tok-n">Optional</span><span class="tok-o">.</span><span class="tok-na">empty</span><span class="tok-o">();</span>
+
+        <span class="tok-k">return</span> <span class="tok-n">Optional</span><span class="tok-o">.</span><span class="tok-na">of</span><span class="tok-o">(</span><span class="tok-k">new</span> <span class="tok-n">ServiceVendor</span><span class="tok-o">&lt;</span><span class="tok-n">Jedis</span><span class="tok-o">&gt;()</span> <span class="tok-o">{</span>
+            <span class="tok-nd">@Override</span>
+            <span class="tok-kd">public</span> <span class="tok-n">String</span> <span class="tok-nf">name</span><span class="tok-o">()</span> <span class="tok-o">{</span>
+                <span class="tok-k">return</span> <span class="tok-n">name</span><span class="tok-o">;</span>
+            <span class="tok-o">}</span>
+
+            <span class="tok-nd">@Override</span>
+            <span class="tok-kd">public</span> <span class="tok-n">Class</span><span class="tok-o">&lt;</span><span class="tok-n">Jedis</span><span class="tok-o">&gt;</span> <span class="tok-nf">type</span><span class="tok-o">()</span> <span class="tok-o">{</span>
+                <span class="tok-k">return</span> <span class="tok-n">Jedis</span><span class="tok-o">.</span><span class="tok-na">class</span><span class="tok-o">;</span>
+            <span class="tok-o">}</span>
+
+            <span class="tok-nd">@Override</span>
+            <span class="tok-kd">public</span> <span class="tok-n">Jedis</span> <span class="tok-nf">vend</span><span class="tok-o">(</span><span class="tok-n">Accumulator</span> <span class="tok-n">acc</span><span class="tok-o">)</span> <span class="tok-kd">throws</span> <span class="tok-n">Exception</span> <span class="tok-o">{</span>
+                <span class="tok-n">Jedis</span> <span class="tok-n">ret</span> <span class="tok-o">=</span> <span class="tok-k">new</span> <span class="tok-n">Jedis</span><span class="tok-o">(</span><span class="tok-n">host</span><span class="tok-o">);</span>
+                <span class="tok-c1">// make sure we are notified of release</span>
+                <span class="tok-n">acc</span><span class="tok-o">.</span><span class="tok-na">accumulate</span><span class="tok-o">(</span><span class="tok-n">ret</span><span class="tok-o">,</span> <span class="tok-k">this</span><span class="tok-o">);</span>
+                <span class="tok-k">return</span> <span class="tok-n">ret</span><span class="tok-o">;</span>
+            <span class="tok-o">}</span>
+
+            <span class="tok-nd">@Override</span>
+            <span class="tok-kd">public</span> <span class="tok-kt">void</span> <span class="tok-nf">endLife</span><span class="tok-o">()</span> <span class="tok-o">{</span>
+
+            <span class="tok-o">}</span>
+
+            <span class="tok-nd">@Override</span>
+            <span class="tok-kd">public</span> <span class="tok-kt">void</span> <span class="tok-nf">release</span><span class="tok-o">(</span><span class="tok-n">Jedis</span> <span class="tok-n">item</span><span class="tok-o">,</span> <span class="tok-kt">boolean</span> <span class="tok-n">success</span><span class="tok-o">)</span> <span class="tok-kd">throws</span> <span class="tok-n">Exception</span> <span class="tok-o">{</span>
+                <span class="tok-n">item</span><span class="tok-o">.</span><span class="tok-na">close</span><span class="tok-o">();</span>
+            <span class="tok-o">}</span>
+        <span class="tok-o">});</span>
+    <span class="tok-o">}</span>
+<span class="tok-o">}</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The above code associates Execution Properties with code that will vend connections
+to databases, caches, and other services. How does it work?</p>
+</div>
+<div class="paragraph">
+<p>Take a look at <code>exec_props.json</code>. There&#8217;s an entry:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="pygments highlight"><code data-lang="json">  <span class="tok-s2">&quot;cache&quot;</span><span class="tok-err">:</span> <span class="tok-p">{</span>
+    <span class="tok-nt">&quot;type&quot;</span><span class="tok-p">:</span> <span class="tok-s2">&quot;redis&quot;</span><span class="tok-p">,</span>
+    <span class="tok-nt">&quot;host&quot;</span><span class="tok-p">:</span> <span class="tok-s2">&quot;localhost&quot;</span>
+  <span class="tok-p">}</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>This entry says &#8220;there&#8217;s a service named <code>cache</code> that has a driver type <code>redis</code> that connects to
+a host named <code>localhost</code>.&#8221; To access the service, we invoke <code>context.vendForName("cache", Jedis.class)</code>
+and get an <code>Optional&lt;Jedis&gt;</code> back.</p>
+</div>
+<div class="paragraph">
+<p>You can create <code>ServiceVendorBuilder</code> instances for any <code>type</code> and, boom, have access to those services
+based on Execution Properties.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_serializers">Serializers</h3>
+<div class="paragraph">
+<p>By default, Funcatron uses <a href="https://github.com/FasterXML/jackson">Jackson</a> to serialize and
+ deserialized JSON data. This is fine for Java PoJos that have getters/setters. But if you
+ are using <a href="http://stackoverflow.com/questions/3511120/why-shouldnt-i-use-immutable-pojos-instead-of-javabeans">immutable pojos</a>,
+ Scala case classes, etc., you may have more complex serialization needs.</p>
+</div>
+<div class="paragraph">
+<p>The <code>Func</code> interface allows you to write custom serializers.</p>
+</div>
+<div class="paragraph">
+<p>To deserialize incoming data using special rules, override the <code>jsonDecoder</code> method in <code>Func</code>
+and to serialize returned data using special rules, override the <code>jsonEncoder</code> method:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="pygments highlight"><code data-lang="java">    <span class="tok-kd">public</span> <span class="tok-n">Function</span><span class="tok-o">&lt;</span><span class="tok-n">InputStream</span><span class="tok-o">,</span> <span class="tok-n">Data</span><span class="tok-o">&gt;</span> <span class="tok-nf">jsonDecoder</span><span class="tok-o">()</span> <span class="tok-o">{</span>
+        <span class="tok-k">return</span> <span class="tok-n">m</span> <span class="tok-o">-&gt;</span> <span class="tok-o">{</span>
+            <span class="tok-k">try</span> <span class="tok-o">{</span>
+                <span class="tok-k">return</span> <span class="tok-n">jackson</span><span class="tok-o">.</span><span class="tok-na">readValue</span><span class="tok-o">(</span><span class="tok-n">m</span><span class="tok-o">,</span> <span class="tok-n">Data</span><span class="tok-o">.</span><span class="tok-na">class</span><span class="tok-o">);</span>
+            <span class="tok-o">}</span> <span class="tok-k">catch</span> <span class="tok-o">(</span><span class="tok-n">Exception</span> <span class="tok-n">e</span><span class="tok-o">)</span> <span class="tok-o">{</span>
+                <span class="tok-k">throw</span> <span class="tok-k">new</span> <span class="tok-n">RuntimeException</span><span class="tok-o">(</span><span class="tok-s">&quot;Failed to deserialize&quot;</span><span class="tok-o">,</span> <span class="tok-n">e</span><span class="tok-o">);</span>
+            <span class="tok-o">}</span>
+        <span class="tok-o">};</span>
+    <span class="tok-o">}</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The method returns a <code>Function</code> that takes an <code>InputStream</code> and returns an instance
+of the type matching the first parameter of <code>apply</code> method.</p>
+</div>
+<div class="paragraph">
+<p>The <code>jsonEncoder</code> method does the opposite. Here&#8217;s a Scala example:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="pygments highlight"><code data-lang="scala"><span class="tok-k">trait</span> <span class="tok-nc">DecoderOMatic</span><span class="tok-o">[</span><span class="tok-kt">T</span><span class="tok-o">]</span> <span class="tok-o">{</span>
+
+  <span class="tok-k">protected</span> <span class="tok-k">def</span> <span class="tok-n">ct</span><span class="tok-k">:</span> <span class="tok-kt">Class</span><span class="tok-o">[</span><span class="tok-kt">T</span><span class="tok-o">]</span>
+
+  <span class="tok-k">def</span> <span class="tok-n">jsonDecoder</span><span class="tok-o">()</span><span class="tok-k">:</span> <span class="tok-kt">Function</span><span class="tok-o">[</span><span class="tok-kt">InputStream</span>, <span class="tok-kt">T</span><span class="tok-o">]</span> <span class="tok-k">=</span> <span class="tok-o">{</span>
+    <span class="tok-k">new</span> <span class="tok-nc">Function</span><span class="tok-o">[</span><span class="tok-kt">InputStream</span>, <span class="tok-kt">T</span><span class="tok-o">]</span> <span class="tok-o">{</span>
+      <span class="tok-k">def</span> <span class="tok-n">apply</span><span class="tok-o">(</span><span class="tok-n">t</span><span class="tok-k">:</span> <span class="tok-kt">InputStream</span><span class="tok-o">)</span><span class="tok-k">:</span> <span class="tok-kt">T</span> <span class="tok-o">=</span> <span class="tok-nc">DecoderOMatic</span><span class="tok-o">.</span><span class="tok-n">jackson</span><span class="tok-o">.</span><span class="tok-n">readValue</span><span class="tok-o">(</span><span class="tok-n">t</span><span class="tok-o">,</span> <span class="tok-n">ct</span><span class="tok-o">)</span>
+    <span class="tok-o">}</span>
+  <span class="tok-o">}</span>
+
+  <span class="tok-k">def</span> <span class="tok-n">jsonEncoder</span><span class="tok-o">()</span><span class="tok-k">:</span> <span class="tok-kt">Function</span><span class="tok-o">[</span><span class="tok-kt">Object</span>, <span class="tok-kt">Array</span><span class="tok-o">[</span><span class="tok-kt">Byte</span><span class="tok-o">]]</span> <span class="tok-k">=</span>
+    <span class="tok-k">new</span> <span class="tok-nc">Function</span><span class="tok-o">[</span><span class="tok-kt">Object</span>, <span class="tok-kt">Array</span><span class="tok-o">[</span><span class="tok-kt">Byte</span><span class="tok-o">]]</span> <span class="tok-o">{</span>
+      <span class="tok-k">def</span> <span class="tok-n">apply</span><span class="tok-o">(</span><span class="tok-n">o</span><span class="tok-k">:</span> <span class="tok-kt">Object</span><span class="tok-o">)</span> <span class="tok-k">=</span> <span class="tok-nc">DecoderOMatic</span><span class="tok-o">.</span><span class="tok-n">jackson</span><span class="tok-o">.</span><span class="tok-n">writer</span><span class="tok-o">().</span><span class="tok-n">writeValueAsBytes</span><span class="tok-o">(</span><span class="tok-n">o</span><span class="tok-o">)</span>
+    <span class="tok-o">}</span>
+<span class="tok-o">}</span>
+
+<span class="tok-k">object</span> <span class="tok-nc">DecoderOMatic</span> <span class="tok-o">{</span>
+  <span class="tok-k">val</span> <span class="tok-n">jackson</span><span class="tok-k">:</span> <span class="tok-kt">ObjectMapper</span> <span class="tok-o">=</span> <span class="tok-o">{</span>
+    <span class="tok-k">val</span> <span class="tok-n">mapper</span> <span class="tok-k">=</span> <span class="tok-k">new</span> <span class="tok-nc">ObjectMapper</span><span class="tok-o">()</span>
+    <span class="tok-n">mapper</span><span class="tok-o">.</span><span class="tok-n">registerModule</span><span class="tok-o">(</span><span class="tok-nc">DefaultScalaModule</span><span class="tok-o">)</span>
+    <span class="tok-n">mapper</span>
+  <span class="tok-o">}</span>
+<span class="tok-o">}</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The above code creates an instance of the Jackson <code>ObjectMapper</code> and adds the Scala module.</p>
+</div>
+<div class="paragraph">
+<p>For complex data types, build your own serializers.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_funcatron_swagger_file">Funcatron Swagger File</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>So&#8230;&#8203; how does Funcatron associate code with HTTP endpoints? How does Funcatron
+ ensure that the functions are called with properly shaped data?</p>
+</div>
+<div class="paragraph">
+<p>Funcatron endpoints are defined in a <a href="http://swagger.io/">Swagger</a> file named
+ either <code>funcatron.yaml</code> or <code>funcatron.json</code>. Define the endpoints, associate them with
+ the class that implements the <code>Func</code> interface via the <code>operationId</code> field and
+ Funcatron does the rest.</p>
+</div>
+<div class="paragraph">
+<p>What&#8217;s "the rest"?</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Funcatron ensures the incoming data is shaped correctly and will not
+attempt to deserialize the JSON data if it&#8217;s not properly shaped.</p>
+</li>
+<li>
+<p>Funcatron ensures all the rules defined in the Swagger file (e.g.,
+OAuth rules, etc.) are properly enforced.</p>
+</li>
+<li>
+<p>In production, wires up the front end web servers to respond to requests.</p>
+</li>
+<li>
+<p>In development mode, presents a UI to test out the API endpoints at
+<a href="http://localhost:3000/ui/" class="bare">http://localhost:3000/ui/</a></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>So, let&#8217;s see some of the Swagger magic in action. Point your browser to
+<a href="http://localhost:3000/ui/" class="bare">http://localhost:3000/ui/</a> then click through "default" and "POST". Cool.
+You can try out a <code>POST</code> from your browser.</p>
+</div>
+<div class="paragraph">
+<p>Next, let&#8217;s update the <code>funcatron.yaml</code> file. Replace the <code>post:</code> line
+and all subsequent lines in the file with:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="pygments highlight"><code data-lang="yaml">    <span class="tok-l tok-l-Scalar tok-l-Scalar-Plain">post</span><span class="tok-p tok-p-Indicator">:</span>
+      <span class="tok-l tok-l-Scalar tok-l-Scalar-Plain">description</span><span class="tok-p tok-p-Indicator">:</span> <span class="tok-l tok-l-Scalar tok-l-Scalar-Plain">Creates new sample data</span>
+      <span class="tok-l tok-l-Scalar tok-l-Scalar-Plain">operationId</span><span class="tok-p tok-p-Indicator">:</span> <span class="tok-l tok-l-Scalar tok-l-Scalar-Plain">my.stellar.MyFunction</span>
+      <span class="tok-l tok-l-Scalar tok-l-Scalar-Plain">parameters</span><span class="tok-p tok-p-Indicator">:</span>
+        <span class="tok-p tok-p-Indicator">-</span> <span class="tok-l tok-l-Scalar tok-l-Scalar-Plain">name</span><span class="tok-p tok-p-Indicator">:</span> <span class="tok-l tok-l-Scalar tok-l-Scalar-Plain">body</span>
+          <span class="tok-l tok-l-Scalar tok-l-Scalar-Plain">in</span><span class="tok-p tok-p-Indicator">:</span> <span class="tok-l tok-l-Scalar tok-l-Scalar-Plain">body</span>
+          <span class="tok-l tok-l-Scalar tok-l-Scalar-Plain">required</span><span class="tok-p tok-p-Indicator">:</span> <span class="tok-l tok-l-Scalar tok-l-Scalar-Plain">true</span>
+          <span class="tok-l tok-l-Scalar tok-l-Scalar-Plain">schema</span><span class="tok-p tok-p-Indicator">:</span>
+            <span class="tok-l tok-l-Scalar tok-l-Scalar-Plain">$ref</span><span class="tok-p tok-p-Indicator">:</span> <span class="tok-s">&#39;#/definitions/Data&#39;</span>
+      <span class="tok-l tok-l-Scalar tok-l-Scalar-Plain">responses</span><span class="tok-p tok-p-Indicator">:</span>
+        <span class="tok-s">&quot;200&quot;</span><span class="tok-p tok-p-Indicator">:</span>
+          <span class="tok-l tok-l-Scalar tok-l-Scalar-Plain">description</span><span class="tok-p tok-p-Indicator">:</span> <span class="tok-l tok-l-Scalar tok-l-Scalar-Plain">sample response</span>
+        <span class="tok-l tok-l-Scalar tok-l-Scalar-Plain">default</span><span class="tok-p tok-p-Indicator">:</span>
+          <span class="tok-l tok-l-Scalar tok-l-Scalar-Plain">description</span><span class="tok-p tok-p-Indicator">:</span> <span class="tok-l tok-l-Scalar tok-l-Scalar-Plain">unexpected error</span>
+
+<span class="tok-l tok-l-Scalar tok-l-Scalar-Plain">definitions</span><span class="tok-p tok-p-Indicator">:</span>
+  <span class="tok-l tok-l-Scalar tok-l-Scalar-Plain">Data</span><span class="tok-p tok-p-Indicator">:</span>
+    <span class="tok-l tok-l-Scalar tok-l-Scalar-Plain">required</span><span class="tok-p tok-p-Indicator">:</span>
+      <span class="tok-p tok-p-Indicator">-</span> <span class="tok-l tok-l-Scalar tok-l-Scalar-Plain">name</span>
+      <span class="tok-p tok-p-Indicator">-</span> <span class="tok-l tok-l-Scalar tok-l-Scalar-Plain">age</span>
+    <span class="tok-l tok-l-Scalar tok-l-Scalar-Plain">properties</span><span class="tok-p tok-p-Indicator">:</span>
+      <span class="tok-l tok-l-Scalar tok-l-Scalar-Plain">name</span><span class="tok-p tok-p-Indicator">:</span>
+        <span class="tok-l tok-l-Scalar tok-l-Scalar-Plain">type</span><span class="tok-p tok-p-Indicator">:</span> <span class="tok-l tok-l-Scalar tok-l-Scalar-Plain">string</span>
+      <span class="tok-l tok-l-Scalar tok-l-Scalar-Plain">age</span><span class="tok-p tok-p-Indicator">:</span>
+        <span class="tok-l tok-l-Scalar tok-l-Scalar-Plain">type</span><span class="tok-p tok-p-Indicator">:</span> <span class="tok-l tok-l-Scalar tok-l-Scalar-Plain">number</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Now, reload the browser and you can see the UI presents you with the option
+of entering JSON data. Enter some and click the <code>Try it out!</code> button.</p>
+</div>
+<div class="paragraph">
+<p>Well&#8230;&#8203; you get the idea. Basically, model your REST endpoints in Swagger,
+test stuff out in the browser. Associate your classes with the <code>operationId</code>
+field, and the code will Just Work&#8482;.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_execution_properties">Execution Properties</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The static relationship between REST endpoints and your code as well as access control
+rules, etc. are defined in your code and the <code>funcatron.yaml</code> Swagger file.</p>
+</div>
+<div class="paragraph">
+<p>However, there will be runtime properties that are different among different environments.
+For example, you&#8217;ll have database access credentials for development time, for testing time,
+staging, and production.</p>
+</div>
+<div class="paragraph">
+<p>Those items bundled together in &#8220;Execution Properties&#8221;.</p>
+</div>
+<div class="paragraph">
+<p>For the development-time project, we have the <code>exec_props.json</code> file which
+contains Execution Properties that are used during development-time.</p>
+</div>
+<div class="paragraph">
+<p>We&#8217;ve seen if the Execution Properties have a <code>type</code> field and a named Service Vendor
+is associated with the type, the service is available in the <code>Context</code>.</p>
+</div>
+<div class="paragraph">
+<p>The entire contents of the Execution Properties information is available in the
+<code>Context.properties()</code> method. This returns a <code>Map</code> of key/value pairs.
+Put any old information associated with the execution of the code in the
+Execution Properties and it&#8217;s available to the <code>Func</code>.</p>
+</div>
+<div class="paragraph">
+<p>Execution properties are defined via JSON when a Func Bundle is deployed. See <a href="#_deploying">Deploying</a>.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_packaging_your_func_bundle">Packaging your Func Bundle</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Once you&#8217;re happy with your code and want to create a &#8220;Func Bundle&#8221; and upload it to
+Funcatron:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>mvn clean test package</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Once the packaging is done, you&#8217;ll have a bundle that you can upload to the Funcatron cluster:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="pygments highlight"><code data-lang="shell">dpp@octopus:~/tmp/thang$ ls -l target/thang-0.1.0-jar-with-dependencies.jar
+-rw-rw-r-- 1 dpp dpp 4254796 Jan  2 17:42 target/thang-0.1.0-jar-with-dependencies.jar</code></pre>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_deploying">Deploying</h3>
+<div class="paragraph">
+<p>To upload:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="pygments highlight"><code data-lang="shell">wget -q -O - --post-file=target/thang-0.1.0-jar-with-dependencies.jar http://&lt;SERVER&gt;:&lt;PORT&gt;/api/v1/add_func</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_the_build_file">The Build File</h2>
+<div class="sectionbody">
+
+</div>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Version 0.2.5<br>
+Last updated 2017-01-18 00:56:41 UTC
+</div>
+</div>
+</body>
+</html>
