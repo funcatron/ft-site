@@ -496,8 +496,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div class="details">
 <span id="author" class="author">David Pollak</span><br>
 <span id="email" class="email"><a href="mailto:d@funcatron.org">d@funcatron.org</a></span><br>
-<span id="revnumber">version 0.2.5,</span>
-<span id="revdate">2017-01-06</span>
+<span id="revdate">2017-01-23</span>
 </div>
 <div id="toc" class="toc">
 <div id="toctitle">Table of Contents</div>
@@ -724,11 +723,11 @@ Gradle, sbt, and lein.</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="pygments highlight"><code data-lang="shell">docker run -ti --rm -e TRON_1=--devmode -p 3000:3000 -p 54657:54657 funcatron/tron:v0.2.5</code></pre>
+<pre class="pygments highlight"><code data-lang="shell">docker run -ti --rm -e TRON_1=--devmode -p 3000:3000 -p 54657:54657 funcatron/tron:v0.2.6</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>That command tells <code>docker</code> to <code>run</code> the <code>funcatron/tron:v0.2.5</code> container.</p>
+<p>That command tells <code>docker</code> to <code>run</code> the <code>funcatron/tron:v0.2.6</code> container.</p>
 </div>
 <div class="paragraph">
 <p>We want
@@ -771,7 +770,7 @@ feature:</p>
 <pre class="pygments highlight"><code data-lang="shell">mvn archetype:generate -B \
    -DarchetypeGroupId=funcatron \
    -DarchetypeArtifactId=starter \
-   -DarchetypeVersion=0.2.5 \
+   -DarchetypeVersion=0.2.6 \
    -DgroupId=my.stellar \
    -DartifactId=thang \
    -Dversion=0.1.0 \
@@ -783,7 +782,7 @@ feature:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="pygments highlight"><code data-lang="powershell"><span class="tok-n">mvn</span> <span class="tok-n">archetype</span><span class="tok-err">:</span><span class="tok-n">generate</span> <span class="tok-s2">&quot;-B&quot;</span> <span class="tok-s2">&quot;-DarchetypeGroupId=funcatron&quot;</span> <span class="tok-s2">&quot;-DarchetypeArtifactId=starter&quot;</span> <span class="tok-s2">&quot;-DarchetypeVersion=0.2.5&quot;</span> <span class="tok-s2">&quot;-DgroupId=my.stellar&quot;</span> <span class="tok-s2">&quot;-DartifactId=thang&quot;</span> <span class="tok-s2">&quot;-Dversion=0.1.0&quot;</span> <span class="tok-s2">&quot;-DarchetypeRepository=https://clojars.org/repo&quot;</span></code></pre>
+<pre class="pygments highlight"><code data-lang="powershell"><span class="tok-n">mvn</span> <span class="tok-n">archetype</span><span class="tok-err">:</span><span class="tok-n">generate</span> <span class="tok-s2">&quot;-B&quot;</span> <span class="tok-s2">&quot;-DarchetypeGroupId=funcatron&quot;</span> <span class="tok-s2">&quot;-DarchetypeArtifactId=starter&quot;</span> <span class="tok-s2">&quot;-DarchetypeVersion=0.2.6&quot;</span> <span class="tok-s2">&quot;-DgroupId=my.stellar&quot;</span> <span class="tok-s2">&quot;-DartifactId=thang&quot;</span> <span class="tok-s2">&quot;-Dversion=0.1.0&quot;</span> <span class="tok-s2">&quot;-DarchetypeRepository=https://clojars.org/repo&quot;</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -871,7 +870,7 @@ connects to the Funcatron instance.</p>
 <div class="content">
 <pre class="pygments highlight"><code data-lang="java">    <span class="tok-kd">public</span> <span class="tok-kd">static</span> <span class="tok-kt">void</span> <span class="tok-nf">main</span><span class="tok-o">(</span><span class="tok-n">String</span><span class="tok-o">[]</span> <span class="tok-n">args</span><span class="tok-o">)</span> <span class="tok-kd">throws</span> <span class="tok-n">Exception</span> <span class="tok-o">{</span>
         <span class="tok-n">System</span><span class="tok-o">.</span><span class="tok-na">out</span><span class="tok-o">.</span><span class="tok-na">println</span><span class="tok-o">(</span><span class="tok-s">&quot;Starting connection to Funcatron dev server&quot;</span><span class="tok-o">);</span>
-        <span class="tok-n">System</span><span class="tok-o">.</span><span class="tok-na">out</span><span class="tok-o">.</span><span class="tok-na">println</span><span class="tok-o">(</span><span class="tok-s">&quot;run the Funcatron dev server with: docker run -ti --rm  -e TRON_1=--devmode -p 3000:3000 -p 54657:54657 funcatron/tron:v0.2.5&quot;</span><span class="tok-o">);</span>
+        <span class="tok-n">System</span><span class="tok-o">.</span><span class="tok-na">out</span><span class="tok-o">.</span><span class="tok-na">println</span><span class="tok-o">(</span><span class="tok-s">&quot;run the Funcatron dev server with: docker run -ti --rm  -e TRON_1=--devmode -p 3000:3000 -p 54657:54657 funcatron/tron:v0.2.6&quot;</span><span class="tok-o">);</span>
         <span class="tok-n">System</span><span class="tok-o">.</span><span class="tok-na">out</span><span class="tok-o">.</span><span class="tok-na">println</span><span class="tok-o">(</span><span class="tok-s">&quot;Then point your browser to http://localhost:3000/api/sample&quot;</span><span class="tok-o">);</span>
 
         <span class="tok-n">Register</span><span class="tok-o">.</span><span class="tok-na">register</span><span class="tok-o">(</span><span class="tok-n">funcatronDevHost</span><span class="tok-o">(),</span> <span class="tok-n">funcatronDevPort</span><span class="tok-o">(),</span>
@@ -1341,8 +1340,7 @@ Funcatron:</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Version 0.2.5<br>
-Last updated 2017-01-23 20:21:38 UTC
+Last updated 2017-01-23 20:32:30 UTC
 </div>
 </div>
 </body>

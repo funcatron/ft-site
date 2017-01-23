@@ -1,0 +1,30 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title></title>
+  <style type="text/css">code{white-space: pre;}</style>
+</head>
+<body>
+<h1 id="holistic-test">Holistic Test</h1>
+<p>A Docker container and supporting scripts to</p>
+<ul>
+<li>Takes the parent directory of the Funcatron projects</li>
+<li>Ensure's there's no uncommitted code in the projects</li>
+<li>installs intf</li>
+<li>installs starter</li>
+<li>installs devshim</li>
+<li>Builds tron</li>
+<li>starts a Tron instance and a Runner instance</li>
+<li>builds each of the samples and uploads them to the tron</li>
+<li>Tests that each sample runs</li>
+<li>Creates a project with starter</li>
+<li>Compiles and uploads the starter project and insures it can run</li>
+<li>Kills the Tron and Runner instances</li>
+<li>Starts a dev-mode Tron instance</li>
+<li>Ensures that starter project works in devmode</li>
+</ul>
+</body>
+</html>
