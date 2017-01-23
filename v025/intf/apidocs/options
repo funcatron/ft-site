@@ -1,0 +1,24 @@
+-classpath
+'/root/.m2/repository/com/zaxxer/HikariCP/2.5.1/HikariCP-2.5.1.jar:/root/.m2/repository/org/slf4j/slf4j-api/1.7.21/slf4j-api-1.7.21.jar'
+-encoding
+'ANSI_X3.4-1968'
+-protected
+-sourcepath
+'/newdata/intf/src/main/java'
+-author
+-bottom
+'Copyright &#169; 2017. All rights reserved.'
+-charset
+'UTF-8'
+-d
+'/newdata/intf/target/site/apidocs'
+-docencoding
+'UTF-8'
+-doctitle
+'intf 0.2.5 API'
+-linkoffline
+'http://docs.oracle.com/javase/8/docs/api' '/newdata/intf/target/javadoc-bundle-options'
+-use
+-version
+-windowtitle
+'intf 0.2.5 API'
